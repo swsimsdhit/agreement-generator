@@ -1,0 +1,2872 @@
+[
+  {
+    "id": "gap-analysis",
+    "name": "Gap Analysis Agreement",
+    "description": "Meaningful Use / compliance gap analysis consulting",
+    "fields": [
+      {
+        "key": "CUSTOMER_NAME",
+        "label": "Customer / Company Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "key": "SCOPE",
+        "label": "Scope / System Description",
+        "type": "textarea",
+        "placeholder": "e.g., Epic EHR system, approximately 50 providers"
+      },
+      {
+        "key": "DATE",
+        "label": "Agreement Date",
+        "type": "date",
+        "auto": true
+      }
+    ],
+    "sections": [
+      {
+        "type": "doc_header",
+        "content": ""
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "title_italic",
+        "content": "{{CUSTOMER_NAME}}"
+      },
+      {
+        "type": "title_italic",
+        "content": "Gap Analysis Consulting Agreement"
+      },
+      {
+        "type": "title_italic",
+        "content": "{{DATE}}"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "heading",
+        "content": "Software and Services to be Provided:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT to perform a comprehensive gap analysis of {{CUSTOMER_NAME}}'s healthcare information technology environment, including: {{SCOPE}}."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Review of current EHR workflows, system configurations, and documentation practices against applicable Meaningful Use requirements, ONC certification standards, and industry best practices."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Assessment of clinical data capture, reporting capabilities, and interoperability readiness."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Identification of deficiencies and prioritized remediation recommendations."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Delivery of a written Gap Analysis Report within thirty (30) days of project commencement."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will provide Client with the following deliverables:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Written Gap Analysis Report summarizing all findings and prioritized recommendations."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Proposed remediation roadmap with actionable next steps and estimated level of effort."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Any requested enhancements or additional analysis beyond the agreed scope will be billed on an hourly basis at the normal rate."
+      },
+      {
+        "type": "heading",
+        "content": "Pricing:"
+      },
+      {
+        "type": "pricing_table",
+        "label": "Gap Analysis",
+        "rows": [
+          {
+            "module": "Comprehensive Gap Analysis",
+            "items": [
+              "Review of EHR workflows, configurations, and documentation",
+              "Assessment of clinical data capture and interoperability readiness",
+              "Written Gap Analysis Report with prioritized recommendations"
+            ],
+            "price": "$5,000",
+            "initial": true,
+            "id": "gap_analysis__comprehensive_gap_analysis",
+            "optional": false
+          },
+          {
+            "module": "Payment due within thirty (30) days of invoice",
+            "price": "",
+            "initial": false,
+            "id": "gap_analysis__payment_due_within_thirty_30_days_of_invoice",
+            "optional": false
+          },
+          {
+            "module": "Expenses billed at cost with prior written approval",
+            "price": "",
+            "initial": false,
+            "id": "gap_analysis__expenses_billed_at_cost_with_prior_written_approva",
+            "optional": false
+          },
+          {
+            "module": "Gap Analysis Total:",
+            "price": "$",
+            "initial": false,
+            "isTotal": true,
+            "id": "gap_analysis__total",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "Assumptions / Client Responsibilities:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will have both technical and application resources available to provide information concerning current system functionality and technology infrastructure."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will provide DHIT with access to relevant systems, documentation, and personnel required to complete the gap analysis."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will designate a primary point of contact with authority to make decisions on behalf of Client."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client's EHR/EMR system is the source of truth for all data."
+      },
+      {
+        "type": "heading",
+        "content": "Normal Rates and Fees:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Normal rate is $200 per hour per DHIT team member. Normal Business Hours – 8:30 AM to 5 PM Central Time, Monday through Friday, excluding major holidays."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The rate for a pre-purchased bank of support hours is $180 per hour with a minimum of 5 hours. Hours never expire but there are no refunds."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "On-call after-hours rate is $250/hour with a minimum billing of 1/2 hour per incident."
+      },
+      {
+        "type": "heading",
+        "content": "Confidentiality and HIPAA Compliance:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Each party agrees to hold all Confidential Information in strict confidence and not to disclose to any third party without prior written consent."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT agrees to comply with all applicable HIPAA, HITECH, and state privacy and security laws."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "If services require access to protected health information (PHI), the parties will execute a Business Associate Agreement (BAA) prior to any such access."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "All reports and deliverables prepared by DHIT specifically for Client shall become the property of Client upon full payment. DHIT retains ownership of all pre-existing methodologies and frameworks."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT is an independent contractor. Nothing in this Agreement creates a partnership, joint venture, or agency relationship."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT's total liability shall not exceed the total fees paid under this Agreement. Neither party shall be liable for indirect, incidental, or consequential damages."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement is governed by the laws of the State of Texas. Disputes shall be resolved by binding arbitration."
+      },
+      {
+        "type": "heading",
+        "content": "Payment Terms:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The project fee listed above will be due upon signature of this document."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Invoices are sent via email and due/payable upon receipt. Late payments over 30 days will be assessed a 3% late fee. Late payments over 60 days will be passed over to our debt collection agency/lawyer with an additional fee applied."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "3% service fee is charged for Credit Card Payments."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "signature",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "id": "connectehr",
+    "name": "ConnectEHR Agreement",
+    "description": "EHR connectivity, integration, and interoperability services",
+    "fields": [
+      {
+        "key": "CUSTOMER_NAME",
+        "label": "Customer / Company Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "key": "DATE",
+        "label": "Agreement Date",
+        "type": "date",
+        "auto": true
+      }
+    ],
+    "sections": [
+      {
+        "type": "doc_header",
+        "content": ""
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "title_italic",
+        "content": "{{CUSTOMER_NAME}}"
+      },
+      {
+        "type": "title_italic",
+        "content": "ConnectEHR Services Agreement"
+      },
+      {
+        "type": "title_italic",
+        "content": "{{DATE}}"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "heading",
+        "content": "Software and Services to be Provided:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will provide {{CUSTOMER_NAME}} with ConnectEHR software and associated integration services for Client's EHR system, as described below."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "ConnectEHR \"bolt-on\" software modularly certified for applicable 170.315 requirements."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Design, development, testing, and implementation of the required interface(s)."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Mapping spreadsheet to map data elements to CCDA, with guidance on data sets, OIDs, and other required data."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Specifications for SQL stored procedures for generation of HL7 messages and CCDAs. Client to develop stored procedures to read and extract data from the Client database."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Project management, technical design documentation, and interface specification."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Testing coordination with applicable trading partners and post-go-live support for thirty (30) days following successful implementation."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will install one instance of purchased software in Client's environment. Client to configure servers and create user accounts with appropriate privileges. This does not include configuring software or integrating with Client EHR."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Any requested enhancements to software will be billed on an hourly basis at the normal rate."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Any support from DHIT required by Client will be billed on an hourly basis at the normal rate (except as listed below)."
+      },
+      {
+        "type": "heading",
+        "content": "Pricing:"
+      },
+      {
+        "type": "pricing_table",
+        "label": "ConnectEHR",
+        "rows": [
+          {
+            "module": "ConnectEHR Software & Integration Services",
+            "items": [
+              "Modularly certified bolt-on software",
+              "Interface design, development, testing & implementation",
+              "Mapping spreadsheet and technical documentation",
+              "Post-go-live support (30 days)"
+            ],
+            "price": "$7,500",
+            "initial": true,
+            "id": "connectehr__connectehr_software_integration_services",
+            "optional": false
+          },
+          {
+            "module": "50% due upon execution, 50% due at go-live",
+            "price": "",
+            "initial": false,
+            "id": "connectehr__50_due_upon_execution_50_due_at_go_live",
+            "optional": false
+          },
+          {
+            "module": "ConnectEHR Total:",
+            "price": "$",
+            "initial": false,
+            "isTotal": true,
+            "id": "connectehr__total",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "Assumptions / Client Responsibilities:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will have both technical and application resources available to provide information concerning product functionality and technology infrastructure."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will provide timely access to relevant systems, personnel, and documentation, and designate a primary point of contact with authority to make decisions."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will participate in testing, sign-off activities, and provide test data and a non-production test environment as required."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will be responsible for supplying test data and performing user acceptance testing of all software and interfaces."
+      },
+      {
+        "type": "heading",
+        "content": "Normal Rates and Fees:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Normal rate is $200 per hour per DHIT team member. Normal Business Hours – 8:30 AM to 5 PM Central Time, Monday through Friday, excluding major holidays."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The rate for a pre-purchased bank of support hours is $180 per hour with a minimum of 5 hours. Hours never expire but there are no refunds."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "On-call after-hours rate is $250/hour with a minimum billing of 1/2 hour per incident."
+      },
+      {
+        "type": "heading",
+        "content": "Confidentiality and HIPAA Compliance:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Both parties agree to maintain the confidentiality of all proprietary and protected health information encountered in connection with this project."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT agrees to comply with applicable HIPAA, HITECH, and state privacy regulations. To the extent DHIT will access or process protected health information, the parties agree to execute a Business Associate Agreement (BAA)."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT's total liability under this Agreement shall not exceed the total fees paid by Client. Neither party shall be liable for indirect, incidental, or consequential damages."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement is governed by the laws of the State of Texas. Disputes shall be resolved by binding arbitration."
+      },
+      {
+        "type": "heading",
+        "content": "Payment Terms:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The Software Total listed above will be due upon signature of this document."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Invoices are sent via email and due/payable upon receipt. Late payments over 30 days will be assessed a 3% late fee. Late payments over 60 days will be passed over to our debt collection agency/lawyer with an additional fee applied."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "3% service fee is charged for Credit Card Payments."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "signature",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "id": "support",
+    "name": "Support Agreement",
+    "description": "Ongoing technical support and maintenance services",
+    "fields": [
+      {
+        "key": "CUSTOMER_NAME",
+        "label": "Customer / Company Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "key": "SYSTEMS_COVERED",
+        "label": "Systems / Products Covered",
+        "type": "textarea",
+        "placeholder": "e.g., SoftLab interface, HL7 ADT feed"
+      },
+      {
+        "key": "SUPPORT_HOURS",
+        "label": "Support Hours",
+        "type": "text",
+        "default": "Monday–Friday, 8:30 AM – 5:00 PM CT"
+      },
+      {
+        "key": "DATE",
+        "label": "Agreement Date",
+        "type": "date",
+        "auto": true
+      }
+    ],
+    "sections": [
+      {
+        "type": "doc_header",
+        "content": ""
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "title_italic",
+        "content": "{{CUSTOMER_NAME}}"
+      },
+      {
+        "type": "title_italic",
+        "content": "Technical Support Agreement"
+      },
+      {
+        "type": "title_italic",
+        "content": "{{DATE}}"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "heading",
+        "content": "Software and Services to be Provided:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will provide ongoing technical support and maintenance for the following systems: {{SYSTEMS_COVERED}}."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Telephone and email technical support during standard business hours of {{SUPPORT_HOURS}}."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Remote diagnostics, troubleshooting, and issue resolution."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Software updates and patch management as applicable."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Coordination with third-party vendors on Client's behalf."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Response Time Commitments:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Critical (system down / patient care impacted): acknowledged within two (2) business hours, remediation begins within four (4) business hours."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "High Priority: acknowledged within four (4) business hours."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Standard: acknowledged within one (1) business day."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Emergency after-hours support may be arranged separately and will be billed at $250/hour with a minimum billing of 1/2 hour per incident."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Any requested enhancements to software will be billed on an hourly basis at the normal rate."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement does not cover: (a) hardware repair or replacement; (b) issues caused by Client modifications to supported systems without DHIT approval; (c) third-party software not listed above; or (d) training services."
+      },
+      {
+        "type": "heading",
+        "content": "Pricing:"
+      },
+      {
+        "type": "pricing_table",
+        "label": "Support Agreement",
+        "rows": [
+          {
+            "module": "Monthly Support Retainer",
+            "items": [
+              "Telephone and email technical support",
+              "Remote diagnostics and troubleshooting",
+              "Software updates and patch management",
+              "Third-party vendor coordination"
+            ],
+            "price": "$1,200/month",
+            "initial": true,
+            "id": "support_agreement__monthly_support_retainer",
+            "optional": false
+          },
+          {
+            "module": "Initial Term",
+            "price": "12 months",
+            "initial": true,
+            "id": "support_agreement__initial_term",
+            "optional": false
+          },
+          {
+            "module": "Auto-renews annually; 60-day notice to cancel",
+            "price": "",
+            "initial": false,
+            "id": "support_agreement__auto_renews_annually_60_day_notice_to_cancel",
+            "optional": false
+          },
+          {
+            "module": "Support Agreement Total:",
+            "price": "$",
+            "initial": false,
+            "isTotal": true,
+            "id": "support_agreement__total",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "Assumptions / Client Responsibilities:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will maintain supported systems in a reasonably current state."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will provide DHIT with necessary access credentials and remote access capabilities."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will designate a primary technical contact and promptly report issues to DHIT's support line or ticketing system."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Work beyond the scope of this Agreement will be quoted separately and requires written approval prior to commencement."
+      },
+      {
+        "type": "heading",
+        "content": "Normal Rates and Fees:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Normal rate is $200 per hour per DHIT team member. Normal Business Hours – 8:30 AM to 5 PM Central Time, Monday through Friday, excluding major holidays."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The rate for a pre-purchased bank of support hours is $180 per hour with a minimum of 5 hours. Hours never expire but there are no refunds."
+      },
+      {
+        "type": "heading",
+        "content": "Confidentiality and HIPAA Compliance:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT agrees to maintain confidentiality of all Client data and comply with applicable HIPAA, HITECH, and state regulations. To the extent services require access to PHI, the parties will execute a Business Associate Agreement (BAA)."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT's cumulative liability shall not exceed the fees paid in the preceding three (3) months. Neither party shall be liable for indirect, consequential, or punitive damages."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement is governed by the laws of the State of Texas. Disputes shall be resolved by binding arbitration."
+      },
+      {
+        "type": "heading",
+        "content": "Payment Terms:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Monthly invoices are sent via email and due/payable upon receipt. Late payments over 30 days will be assessed a 3% late fee. Late payments over 60 days will be passed over to our debt collection agency/lawyer with an additional fee applied."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "3% service fee is charged for Credit Card Payments."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "signature",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "id": "nda",
+    "name": "Mutual NDA",
+    "description": "Mutual Non-Disclosure Agreement",
+    "fields": [
+      {
+        "key": "CUSTOMER_NAME",
+        "label": "Company Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "key": "PURPOSE",
+        "label": "Purpose of Disclosure",
+        "type": "textarea",
+        "placeholder": "e.g., evaluating a potential business relationship related to healthcare IT integration services"
+      },
+      {
+        "key": "TERM_YEARS",
+        "label": "Confidentiality Term (years)",
+        "type": "text",
+        "default": "3"
+      },
+      {
+        "key": "DATE",
+        "label": "Agreement Date",
+        "type": "date",
+        "auto": true
+      }
+    ],
+    "sections": [
+      {
+        "type": "doc_header",
+        "content": ""
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "title_italic",
+        "content": "{{CUSTOMER_NAME}}"
+      },
+      {
+        "type": "title_italic",
+        "content": "Mutual Non-Disclosure Agreement"
+      },
+      {
+        "type": "title_italic",
+        "content": "{{DATE}}"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "heading",
+        "content": "Purpose:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The parties wish to explore a potential business relationship and may share certain confidential and proprietary information for the purpose of: {{PURPOSE}}."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement governs the treatment of any such information exchanged between {{CUSTOMER_NAME}} (\"Company\") and Dynamic Health IT, Inc. (\"DHIT\"), each a \"Party\" and collectively the \"Parties.\""
+      },
+      {
+        "type": "heading",
+        "content": "Definition of Confidential Information:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "\"Confidential Information\" means any non-public information disclosed by one Party (\"Disclosing Party\") to the other Party (\"Receiving Party\"), whether orally, in writing, electronically, or by any other means, that is designated as confidential or that reasonably should be understood to be confidential given the nature of the information and circumstances of disclosure."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Confidential Information includes, without limitation: business plans, financial information, customer lists, technical specifications, software code, healthcare data, and trade secrets."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Confidential Information does not include information that:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Is or becomes publicly known through no breach of this Agreement."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Was rightfully known to the Receiving Party prior to disclosure."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Is independently developed by the Receiving Party without use of Confidential Information."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Is required to be disclosed by law or court order."
+      },
+      {
+        "type": "heading",
+        "content": "Obligations:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Each Receiving Party agrees to:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Hold all Confidential Information in strict confidence using at least the same degree of care used to protect its own confidential information, but in no event less than reasonable care."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Not disclose Confidential Information to any third party without prior written consent of the Disclosing Party."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Use Confidential Information solely for the Purpose described above."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Limit access to Confidential Information to employees and contractors who have a need to know and are bound by written confidentiality obligations no less restrictive than those herein."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Upon request by the Disclosing Party, or upon termination of this Agreement, the Receiving Party shall promptly return or certifiably destroy all Confidential Information and confirm such action in writing."
+      },
+      {
+        "type": "heading",
+        "content": "Term:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement is effective as of {{DATE}} and continues for a period of {{TERM_YEARS}} years, unless earlier terminated by either Party upon thirty (30) days written notice."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Confidentiality obligations with respect to information disclosed during the term shall survive for {{TERM_YEARS}} years following termination."
+      },
+      {
+        "type": "heading",
+        "content": "Additional Terms:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Nothing in this Agreement grants either Party any license or right to use the other Party's intellectual property except as expressly set forth herein. No obligation to enter into any further agreement is created by this Agreement."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Each Party acknowledges that breach of this Agreement may cause irreparable harm for which monetary damages would be insufficient, and that the Disclosing Party shall be entitled to seek equitable relief, including injunction and specific performance."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement is governed by the laws of the State of Texas. Any dispute shall be resolved by binding arbitration."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement constitutes the entire agreement between the Parties regarding confidentiality and supersedes all prior discussions. Amendments require written signatures of both Parties."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "signature",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "id": "icd-pointer",
+    "name": "ICD Pointer Table Update",
+    "description": "Annual ICD diagnosis pointer table update service",
+    "fields": [
+      {
+        "key": "CUSTOMER_NAME",
+        "label": "Hospital / Facility Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "key": "DATE",
+        "label": "Agreement Date",
+        "type": "date",
+        "auto": true
+      }
+    ],
+    "sections": [
+      {
+        "type": "doc_header",
+        "content": ""
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "title_italic",
+        "content": "{{CUSTOMER_NAME}}"
+      },
+      {
+        "type": "title_italic",
+        "content": "ICD Diagnosis Pointer Table Update Agreement"
+      },
+      {
+        "type": "title_italic",
+        "content": "{{DATE}}"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "heading",
+        "content": "Software and Services to be Provided:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will perform an update of the ICD-10-CM/PCS diagnosis pointer tables within Client's system in preparation for the applicable annual code set update, with a target implementation date of ."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Extraction and review of current pointer table configuration."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Mapping and updating all affected diagnosis pointers to current ICD-10-CM/PCS codes."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Testing in a non-production environment."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Production implementation during a scheduled maintenance window."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Post-implementation validation to confirm accuracy."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT warrants that the pointer table update will accurately reflect the applicable ICD-10-CM/PCS code set as published by CMS and/or the AHA at the time of implementation. Ongoing regulatory changes after implementation are outside the scope of this Agreement."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Any requested enhancements beyond the agreed scope will be billed on an hourly basis at the normal rate."
+      },
+      {
+        "type": "heading",
+        "content": "Pricing:"
+      },
+      {
+        "type": "pricing_table",
+        "label": "ICD Pointer Table Update",
+        "rows": [
+          {
+            "module": "ICD-10-CM/PCS Pointer Table Update Service",
+            "items": [
+              "Extraction and review of current pointer table",
+              "Mapping and updating all affected diagnosis pointers",
+              "Testing in non-production environment",
+              "Production implementation and post-validation"
+            ],
+            "price": "$3,500",
+            "initial": true,
+            "id": "icd_pointer_table_update__icd_10_cm_pcs_pointer_table_update_service",
+            "optional": false
+          },
+          {
+            "module": "Invoiced upon completion of production implementation",
+            "price": "",
+            "initial": false,
+            "id": "icd_pointer_table_update__invoiced_upon_completion_of_production_implementat",
+            "optional": false
+          },
+          {
+            "module": "Travel expenses billed at cost with prior written approval",
+            "price": "",
+            "initial": false,
+            "id": "icd_pointer_table_update__travel_expenses_billed_at_cost_with_prior_written_",
+            "optional": false
+          },
+          {
+            "module": "ICD Update Total:",
+            "price": "$",
+            "initial": false,
+            "isTotal": true,
+            "id": "icd_pointer_table_update__total",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "Assumptions / Client Responsibilities:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will provide DHIT with necessary system access and credentials."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will provide a test/QA environment prior to production implementation."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will make IT staff available during the implementation window."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will perform and sign off on user acceptance testing."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will have a rollback plan in place for the production implementation."
+      },
+      {
+        "type": "heading",
+        "content": "Normal Rates and Fees:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Normal rate is $200 per hour per DHIT team member. Normal Business Hours – 8:30 AM to 5 PM Central Time, Monday through Friday, excluding major holidays."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "On-call after-hours rate is $250/hour with a minimum billing of 1/2 hour per incident."
+      },
+      {
+        "type": "heading",
+        "content": "Confidentiality and HIPAA Compliance:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT agrees to maintain the confidentiality of all Client data and comply with HIPAA, HITECH, and applicable state and federal regulations."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "To the extent services require access to protected health information, the parties will execute a Business Associate Agreement (BAA) prior to such access."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT's total liability shall not exceed the fees paid under this Agreement. Neither party shall be liable for indirect, incidental, or consequential damages."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement is governed by the laws of the State of Texas. Disputes shall be resolved by binding arbitration."
+      },
+      {
+        "type": "heading",
+        "content": "Payment Terms:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The service fee listed above will be due upon signature of this document."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Invoices are sent via email and due/payable upon receipt. Late payments over 30 days will be assessed a 3% late fee. Late payments over 60 days will be passed over to our debt collection agency/lawyer with an additional fee applied."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "3% service fee is charged for Credit Card Payments."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "signature",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "id": "fhir",
+    "name": "Dynamic FHIR API Agreement",
+    "description": "HTI-1 2025 ONC Certified Dynamic FHIR API implementation",
+    "fields": [
+      {
+        "key": "CUSTOMER_NAME",
+        "label": "Customer / Company Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "key": "DATE",
+        "label": "Agreement Date",
+        "type": "date",
+        "auto": true
+      }
+    ],
+    "sections": [
+      {
+        "type": "doc_header",
+        "content": ""
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "title_italic",
+        "content": "{{CUSTOMER_NAME}}"
+      },
+      {
+        "type": "title_italic",
+        "content": "Dynamic FHIR API Agreement"
+      },
+      {
+        "type": "title_italic",
+        "content": "{{DATE}}"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "heading",
+        "content": "Software and Services to be Provided:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will provide {{CUSTOMER_NAME}} with the Dynamic FHIR® API to comply with 2025 HTI-1 ONC requirements, as follows:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "HTI-1 2025 ONC Certification"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "United States Core Data for Interoperability (USCDI) Version 3"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "HL7® SMART App Launch Implementation Guide Release 2.0.0"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "HL7 CDA® R2 Implementation Guide: C-CDA Templates for Clinical Notes STU Companion Guide, Release 4.1"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "FHIR US Core IG 6.1.0"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "FHIR R4.0.1"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Bulk FHIR IG Guide 1.0.1"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Includes assistance with USCDIv3 upgrade and support for adding Persistent IDs to CCD data elements."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "The data is populated into the ConnectEHR database via receipt of an ONC Certified HL7 CCD Summary of Care C-CDA CCD version 2.1."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Secures data using the SMART 2.0 technology standard with Open ID and OAuth 2.0 framework."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The Dynamic FHIR API supports the following access/launch types:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Patient Access from an End-User Device: Standalone Launch provides patients access to USCDIv3 data in XML or JSON format via FHIR R4 DocumentReference Resource from any compatible app using Authorization Code Flow."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Patient Portal API Access: Patient Launch of an App from within a Patient Portal user session using the EHR Launch Flow. (Requires integration with Client's Portal)"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Practitioner Portal API Access: Practitioner Launch of an App from within their EHR session using EHR Launch Flow. Can be a Single-patient app or User-level app. (Requires integration with Client's EHR)"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Backend Service Access for Bulk Data (Flat FHIR): Provides access to Clients autonomously or semi-autonomously that need access to resources from FHIR servers with pre-authorized defined scopes of access."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The Dynamic FHIR API requires a multi-server environment to support all components:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "ConnectEHR database & Agent"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "FHIR Presentation Site"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "FHIR Identity Site"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "FHIR Datastore DB & Agent"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will work with Client to implement one APP connection to the API at no extra cost. Support for additional APPs will be billed hourly."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will support the installation of the purchased software in Client's environment. Client to configure servers and create user accounts with appropriate privileges. This does not include configuring software or integrating with Client EHR."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Consulting, Technical Support and Project Management of Dynamic FHIR implementation are billed on an hourly basis."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Any requested enhancements to software will be billed on an hourly basis at the normal rate."
+      },
+      {
+        "type": "heading",
+        "content": "Pricing:"
+      },
+      {
+        "type": "pricing_table",
+        "label": "Dynamic FHIR API",
+        "rows": [
+          {
+            "module": "HTI-1 2025 ONC Certified FHIR SMART 2.0",
+            "items": [
+              "DataStore - Included",
+              "USCDI v3 FHIR Resources - Included",
+              "g(10) Conformance Fee - Included"
+            ],
+            "price": "$32,000",
+            "initial": true,
+            "id": "dynamic_fhir_api__hti_1_2025_onc_certified_fhir_smart_2_0",
+            "optional": false
+          },
+          {
+            "module": "Identity Provider (IDP) Integration ($5,000 per IDP)",
+            "price": "$",
+            "initial": true,
+            "id": "dynamic_fhir_api__identity_provider_idp_integration_5_000_per_idp",
+            "optional": true,
+            "qty": true
+          },
+          {
+            "module": "40 Hours of support",
+            "price": "Included",
+            "initial": false,
+            "id": "dynamic_fhir_api__40_hours_of_support",
+            "optional": false
+          },
+          {
+            "module": "Dynamic FHIR API Total:",
+            "price": "$",
+            "initial": false,
+            "isTotal": true,
+            "id": "dynamic_fhir_api__total",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "Restrictions / Limitations:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement includes one production, one test, and one staging server installation for Dynamic FHIR API. Client will be charged $1,500.00 for each additional server where Dynamic FHIR API is installed."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT requires Clients to test integration for production use with DHIT and comply fully with Maintenance of Certification. Client must complete DHIT testing before any EHR clients use DHIT's ONC CHPL ID to attest for programs like MIPS."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Dynamic FHIR API will have an optional annual fee for ONC updates and additional USCDI support."
+      },
+      {
+        "type": "heading",
+        "content": "Assumptions / Client Responsibilities:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will have both technical and application resources available to provide information concerning product functionality and technology infrastructure."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will provide Windows Servers and software for the FHIR API."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The DHIT servers will be accessible remotely via broadband using Windows Remote Desktop or other software to be provided by Client."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will be responsible for supplying test data and performing testing of all software and interfaces, including SQL Stored Procedures. DHIT will perform unit testing."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client's EMR system is the source of truth for all data. Required coding systems are available in the EMR system."
+      },
+      {
+        "type": "heading",
+        "content": "Normal Rates and Fees:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Normal rate is $200 per hour per DHIT team member. Normal Business Hours – 8:30 AM to 5 PM Central Time, Monday through Friday, excluding major holidays."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The rate for a pre-purchased bank of support hours is $180 per hour with a minimum of 5 hours. Hours never expire but there are no refunds."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "On-call after-hours rate is $250/hour with a minimum billing of 1/2 hour per incident."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This quote does not include travel expenses. If Client requests on-site resources, reasonable travel-related expenses (airfare, car rental, meals, hotel) would be incremental and billed as incurred."
+      },
+      {
+        "type": "heading",
+        "content": "Confidentiality and HIPAA Compliance:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Both parties agree to maintain the strict confidentiality of all proprietary, technical, and business information exchanged under this Agreement. DHIT agrees to comply with all applicable HIPAA, HITECH, and state privacy and security laws."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "To the extent project activities require access to protected health information (PHI), the parties agree to execute a Business Associate Agreement (BAA) prior to any such access."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT's total cumulative liability shall not exceed the total fees paid by Client. Neither party shall be liable for indirect, incidental, special, or consequential damages."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement is governed by the laws of the State of Texas. Disputes shall be resolved by binding arbitration."
+      },
+      {
+        "type": "heading",
+        "content": "Payment Terms:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The Software Total listed above will be due upon signature of this document. Discounted Bank of hours are due upon signature of agreement."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Invoices are sent via email and due/payable upon receipt. Late payments over 30 days will be assessed a 3% late fee. Late payments over 60 days will be passed over to our debt collection agency/lawyer with an additional fee applied."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "3% service fee is charged for Credit Card Payments."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "signature",
+        "content": ""
+      }
+    ],
+    "hostingAvailable": true,
+    "hostingSections": [
+      {
+        "type": "heading",
+        "content": "Dynamic FHIR API Hosting Addendum"
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "This is an Addendum to the Dynamic FHIR API Agreement between {{CUSTOMER_NAME}} (Client) and Dynamic Health IT (DHIT) dated {{DATE}}."
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "DHIT will provide Client with FHIR API hosting services for Client, as described below."
+      },
+      {
+        "type": "heading",
+        "content": "Hosting Services:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will host the Dynamic FHIR API environment for Client. Hosting fee and terms as specified in the pricing table above."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "99% guaranteed uptime, excluding scheduled maintenance."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The following exclusions apply to uptime percentage:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Scheduled downtime – DHIT will notify Client at least 24 hours in advance of any scheduled downtime. DHIT will normally schedule downtime outside of Normal Business Hours."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Any issues caused by failure of the customer’s hardware or non-DHIT hosted software."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Any issue caused by the customer’s environment (network infrastructure, user-caused, etc.)."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Nonconformant data."
+      },
+      {
+        "type": "heading",
+        "content": "Hosting Service Level Agreement:"
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "DHIT shall provide technical support to Client in accordance with the following priority levels:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Critical: FHIR API or related services are unavailable or inaccessible. Response: 10 Minutes (24/7). Resolution: Within 4 hours."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "High: API response times are greater than five (5) seconds at the 90th percentile; integration errors. Response: 30 Minutes (24/7). Resolution: Within 2 Business Days."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Medium: Other issues not listed above that impact use of application. Response: 12 Business Hours (Normal Business Hours). Resolution: 5 Business Days."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Low: Cosmetic and convenience issues. Documentation issues and requests for advice. Response: 12 Business Hours (Normal Business Hours). Resolution: 20 Business Days."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Target availability is ninety-nine percent (99%) per calendar month. Service Level Failure escalates all Client issues one priority level for thirty (30) days."
+      },
+      {
+        "type": "heading",
+        "content": "Hosting Term:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "TERM: The initial term for Hosting begins upon signature and continues for 36 months. Upon expiration, it will automatically renew for successive extended terms of three (3) months each unless DHIT or Client provides at least ninety (90) days advance written notice of non-renewal."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "CLIENT CANCELLATION FOR CONVENIENCE: Client may terminate at any time on ninety (90) days advance written notice."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "EARLY TERMINATION FEE: If Client terminates for convenience or DHIT terminates for Client breach, Client must pay an early termination fee equal to the total monthly recurring fees for the remaining term or six months’ fees, whichever is less."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT CANCELLATION OR DEFAULT: DHIT can cancel hosting given 6 months’ advance written notice. DHIT agrees to refund 50% of total Client paid hosting fees or 3 months’ hosting, whichever is less if DHIT cancels with less than 6 months’ notice, or uptime is less than 95% and DHIT fails to remedy within 30 days."
+      }
+    ]
+  },
+  {
+    "id": "cqm-solution",
+    "name": "CQMsolution Agreement",
+    "description": "CQMsolution clinical quality measure software and implementation",
+    "fields": [
+      {
+        "key": "CUSTOMER_NAME",
+        "label": "Customer / Facility Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "key": "DATE",
+        "label": "Agreement Date",
+        "type": "date",
+        "auto": true
+      }
+    ],
+    "sections": [
+      {
+        "type": "doc_header",
+        "content": ""
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "title_italic",
+        "content": "{{CUSTOMER_NAME}}"
+      },
+      {
+        "type": "title_italic",
+        "content": "CQMsolution Software Agreement"
+      },
+      {
+        "type": "title_italic",
+        "content": "{{DATE}}"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "heading",
+        "content": "Software and Services to be Provided:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will provide {{CUSTOMER_NAME}} with CQMsolution software, as described below:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "CQMsolution is a user-friendly web-browser-based application from Dynamic Health IT, Inc. (DHIT) for calculating, displaying, and generating clinical quality measures. This application is certified for the ONC Health IT Certification Program."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "CQMsolution is certified for the following criteria and can be used to meet ONC/CMS electronic Clinical Quality Measure requirements for the selected eCQMs purchased:"
+      },
+      {
+        "type": "square_bullet",
+        "content": "170.315(c)(1) – Clinical Quality Measures – Capture and Export"
+      },
+      {
+        "type": "square_bullet",
+        "content": "170.315(c)(2) – Clinical Quality Measures – Incorporate and Calculate"
+      },
+      {
+        "type": "square_bullet",
+        "content": "170.315(c)(3) – Clinical Quality Measures – Reporting"
+      },
+      {
+        "type": "square_bullet",
+        "content": "170.315(c)(4) – Clinical Quality Measures – Filter"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "CQMsolution consists of three main components:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "SQL Database – stores measure definitions, value sets, information about users and practices, system and audit logs, and calculation results."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "IIS Website – user interface, front end of the application."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "CQMsolution Agent – Windows service that performs the measure calculation and QRDA file generation."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "CQMsolution performs these core functions:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Imports QRDA XML files for Report Calculation."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Calculates measure performance directly from patient data in a vendor database or by aggregating Category I QRDAs."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Provides reporting functionality and QRDA Category III aggregate output."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Builds QRDA Category I Patient-Level output XML documents from quality measures defined in HQMF."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Data will be sent to the application using stored procedures or by populating DHIT SQL server staging tables."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Displays report output in the browser interface, with dashboard, drilldown, and filter controls."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "CQMsolution has the ability to run as a stand-alone application or as bolt-on software designed to attach to any EHR that uses a SQL type database."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will install CQMsolution in Client's environment. Client to configure servers and create user accounts with appropriate privileges. This does not include configuring software or integrating with Client EHR."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Any requested enhancements to software will be billed on an hourly basis at the normal rate."
+      },
+      {
+        "type": "heading",
+        "content": "Pricing:"
+      },
+      {
+        "type": "pricing_table",
+        "label": "CQMsolution",
+        "rows": [
+          {
+            "module": "Clinical Quality Measure Solution (6 eCQMs)",
+            "items": [
+              "170.315(c)(1), (c)(2), (c)(3)",
+              "1 prod, 1 test, 1 staging for 1 TIN",
+              "Quality Measure Generation for QRDA 1 and QRDA 3 - Included",
+              "Bank of Support Hours (40) - Included"
+            ],
+            "price": "$25,000",
+            "initial": true,
+            "id": "cqmsolution__clinical_quality_measure_solution_6_ecqms",
+            "optional": false
+          },
+          {
+            "module": "Benchmarks for QPP",
+            "price": "$1,500",
+            "initial": true,
+            "id": "cqmsolution__benchmarks_for_qpp",
+            "optional": true
+          },
+          {
+            "module": "API for Cypress Testing (optional)",
+            "price": "$1,500",
+            "initial": true,
+            "id": "cqmsolution__api_for_cypress_testing_optional",
+            "optional": true
+          },
+          {
+            "module": "CQMsolution SPARK Dashboard",
+            "price": "$3,000",
+            "initial": true,
+            "id": "cqmsolution__cqmsolution_spark_dashboard",
+            "optional": true
+          },
+          {
+            "module": "MIPS Output (individual)",
+            "price": "$1,500",
+            "initial": true,
+            "id": "cqmsolution__mips_output_individual",
+            "optional": true
+          },
+          {
+            "module": "MIPS Output (group)",
+            "price": "$1,500",
+            "initial": true,
+            "id": "cqmsolution__mips_output_group",
+            "optional": true
+          },
+          {
+            "module": "Additional eCQMs",
+            "items": [
+              "Cost per additional eCQM: $750",
+              "Bundle of 10 eCQMs: $5,000"
+            ],
+            "price": "",
+            "initial": true,
+            "id": "cqmsolution__additional_ecqms",
+            "optional": true,
+            "qty": true
+          },
+          {
+            "module": "Additional Facilities",
+            "items": [
+              "Cost per additional TIN: $250",
+              "Bundle of 50 TINs: $7,500"
+            ],
+            "price": "",
+            "initial": true,
+            "id": "cqmsolution__additional_facilities",
+            "optional": true,
+            "qty": true
+          },
+          {
+            "module": "CQMsolution Software Total:",
+            "price": "$",
+            "initial": false,
+            "isTotal": true,
+            "id": "cqmsolution__total",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "Restrictions / Limitations:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT requires Clients to test integration for production use with DHIT and comply fully with Maintenance of Certification. Client must complete DHIT testing before any EHR clients use DHIT's ONC CHPL ID to attest for programs like MIPS."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Additional TINs are available at $250 per TIN. Bundle of 50 TINs available."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Additional eCQMs are available at $750 per measure. Bundle of 10 eCQMs also available."
+      },
+      {
+        "type": "heading",
+        "content": "Assumptions / Client Responsibilities:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will have both technical and application resources available to provide information concerning product functionality and technology infrastructure."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client's EMR system is the source of truth for all data. Required coding systems are available in the EMR system."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The DHIT servers will be accessible remotely via broadband using Windows Remote Desktop or other software to be provided by Client."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will be responsible for supplying test data and performing testing of all software and interfaces, including SQL Stored Procedures. DHIT will perform unit testing."
+      },
+      {
+        "type": "heading",
+        "content": "Normal Rates and Fees:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Normal rate is $200 per hour per DHIT team member. Normal Business Hours – 8:30 AM to 5 PM Central Time, Monday through Friday, excluding major holidays."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The rate for a pre-purchased bank of support hours is $180 per hour with a minimum of 5 hours. Hours never expire but there are no refunds."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "On-call after-hours rate is $250/hour with a minimum billing of 1/2 hour per incident."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This quote does not include travel expenses. If Client requests on-site resources, reasonable travel-related expenses (airfare, car rental, meals, hotel) would be incremental and billed as incurred."
+      },
+      {
+        "type": "heading",
+        "content": "Confidentiality and HIPAA Compliance:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Both parties agree to maintain the strict confidentiality of all proprietary, clinical, and business information shared under this Agreement. DHIT agrees to comply with all applicable HIPAA, HITECH, and state privacy and security laws."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "To the extent services require access to protected health information (PHI), the parties agree to execute a Business Associate Agreement (BAA) prior to any such access."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT's total cumulative liability shall not exceed the total fees paid by Client. Neither party shall be liable for indirect, incidental, or consequential damages."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement is governed by the laws of the State of Texas. Disputes shall be resolved by binding arbitration."
+      },
+      {
+        "type": "heading",
+        "content": "Payment Terms:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The Software Total listed above will be due upon signature of this document. Discounted Bank of hours are due upon signature of agreement."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Invoices are sent via email and due/payable upon receipt. Late payments over 30 days will be assessed a 3% late fee. Late payments over 60 days will be passed over to our debt collection agency/lawyer with an additional fee applied."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "3% service fee is charged for Credit Card Payments."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "signature",
+        "content": ""
+      }
+    ],
+    "hostingAvailable": true,
+    "hostingSections": [
+      {
+        "type": "heading",
+        "content": "CQMsolution Hosting Addendum"
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "This is an Addendum to the CQMsolution Agreement between {{CUSTOMER_NAME}} (Client) and Dynamic Health IT (DHIT) dated {{DATE}}."
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "DHIT will provide Client with CQMsolution hosting services for Client, as described below."
+      },
+      {
+        "type": "heading",
+        "content": "Hosting Services:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will host CQMsolution for Client. Initial fee is $1,500 per month for first 20 practices. Practices can be added in increments of 20 for $500 extra per month."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "99% guaranteed uptime, excluding scheduled maintenance."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The following exclusions apply to uptime percentage:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Scheduled downtime – DHIT will notify Client at least 24 hours in advance of any scheduled downtime. DHIT will normally schedule downtime outside of Normal Business Hours."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Any issues caused by failure of the customer’s hardware or non-DHIT hosted software."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Any issue caused by the customer’s environment (network infrastructure, user-caused, etc.)."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Nonconformant data."
+      },
+      {
+        "type": "heading",
+        "content": "Data Retention Policy:"
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "For the hosted version of CQMsolution, DHIT maintains the following data over the following time periods for each TIN number using CQMsolution:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "7 years of reports marked submitted."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The last 4 reports that completed successfully (regardless of whether they were submitted)."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The last 2 reports that completed with errors."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "For submitted reports more than 2 years old, DHIT reserves the right to archive off-line so that reports may have to be restored prior to Client access. At termination of Agreement, stored reports will be returned to Client upon request. Non-requested reports will be destroyed."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "All files identified as downloaded become part of the general clean-up. Except between January and April of each year. During that time, we will keep all downloaded reports. In May, we will check for submitted files for the prior reporting period and remove all downloaded files if there is a file for the same period marked submitted."
+      },
+      {
+        "type": "heading",
+        "content": "Hosting Service Level Agreement:"
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "DHIT shall provide technical support to Client in accordance with the following priority levels:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Critical: CQMsolution, IQ API, or OnBoarding Agent are unavailable or inaccessible; Single-Signon (SSO) capability is unavailable or inaccessible; or CQM reports cannot be run. Response: 10 Minutes (24/7). Resolution: Within 4 hours."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "High: CQMsolution UI response times are greater than five (5) seconds at the 90th percentile; Clients unable to submit to QPP; CQM calculation errors; SSO taking longer than five (5) seconds. Response: 30 Minutes (24/7). Resolution: Within 2 Business Days."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Medium: Other issues not listed above that impact use of application. Response: 12 Business Hours (Normal Business Hours). Resolution: 5 Business Days."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Low: Cosmetic and convenience issues. Also, documentation issues and requests for advice on product usage. Response: 12 Business Hours (Normal Business Hours). Resolution: 20 Business Days."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will notify Client within the above Response Times when new issues are reported by Client."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will maintain Tier 0 (Self-help) and Tier 1 (Basic Troubleshooting) support. DHIT provides Tier 2 (In-depth technical support) and Tier 3 (Expert product and service support)."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Target availability for the DHIT Service is ninety-nine percent (99%) per calendar month. In the event DHIT fails to meet target availability or Response/Resolution Times (Service Level Failure), all Client issues will be escalated one priority level for thirty (30) days following such failure."
+      },
+      {
+        "type": "heading",
+        "content": "Hosting Term:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "TERM: The initial term for Hosting begins upon signature of this Agreement and continues for 36 months. Upon expiration of the initial term, DHIT may offer renewal for additional fixed terms. If not renewed for a fixed term, it will automatically renew for successive extended terms of three (3) months each unless DHIT or Client provides at least ninety (90) days advance written notice of non-renewal."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "CLIENT CANCELLATION FOR CONVENIENCE: Client may terminate this Agreement for convenience at any time on ninety (90) days advance written notice. Client agrees to continue paying fees and labor costs per any active SOW while any interface is operational for Customer use."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "EARLY TERMINATION FEE: If Client terminates for convenience or DHIT terminates for Client breach, Client must pay an early termination fee equal to the total monthly recurring fees for the remaining portion of the then-current term or six months’ fees, whichever amount is less."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT CANCELLATION OR DEFAULT: DHIT can cancel hosting given 6 months’ advance written notice to Client. DHIT agrees to refund 50% of total Client paid hosting fees or 3 months’ hosting, whichever is less if: DHIT cancels Hosting for convenience with less than 6 months’ notice, or Client notifies DHIT that uptime is less than 95% and DHIT fails to remedy within 30 days."
+      }
+    ]
+  },
+  {
+    "id": "cehrt",
+    "name": "HTI-1 2025 ONC CEHRT Agreement",
+    "description": "Full CEHRT software agreement with ConnectEHR, Patient Portal, CQMsolution, and FHIR API",
+    "fields": [
+      {
+        "key": "CUSTOMER_NAME",
+        "label": "Customer / Company Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "key": "DATE",
+        "label": "Agreement Date",
+        "type": "date",
+        "auto": true
+      }
+    ],
+    "sections": [
+      {
+        "type": "doc_header",
+        "content": ""
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "title_italic",
+        "content": "{{CUSTOMER_NAME}}"
+      },
+      {
+        "type": "title_italic",
+        "content": "HTI-1 2025 ONC CEHRT Software"
+      },
+      {
+        "type": "title_italic",
+        "content": "{{DATE}}"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "heading",
+        "content": "Software and Services to be Provided:"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "DHIT to provide Client with an HTI-1 2025 ONC Certification upgrade release of ConnectEHR with guidance from the HL7 CDA® R2 Implementation Guide: C-CDA Templates for Clinical Notes STU Companion Guide, Release 4"
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "Dynamic Health IT (DHIT) will provide Client with ConnectEHR software and associated services requested by Client, as described below"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "ConnectEHR “bolt-on” software modularly certified for 170.315 requirements listed in table below."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Mapping spreadsheet to map data elements to CCDA and guidance on data sets, OID’s and other required data."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Consulting, Technical Support and Project Management of ConnectEHR implementation billed on an hourly basis."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Specifications for SQL stored procedures for generation of HL7 messages and CCDA’s. Client to develop stored procedures to read and extract data from the Client database."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Direct Protocol. DHIT has partnered with MaxMD (www.max.md) for HISP services. We can provide assistance with connectivity to MaxMD and selection of appropriate MaxMD products and services and that assistance will be billed on an hourly basis."
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "If Client chooses a HISP other than MaxMD, there will be an additional 10 to 15 hours of integration with the ConnectEHR software."
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "DHIT will also provide:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Specifications for SQL stored procedure for generation of C-CDA XML output. Client to develop stored procedure to read and extract data from the Client database."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Consulting, stored procedure development, technical support and project management billed on an hourly basis."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will install one instance of purchased software in Client’s environment. Client to configure servers (see below) and create user accounts with appropriate privileges. This does not include configuring software or integrating with Client EHR."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Any requested enhancements to software will be billed on an hourly basis at the normal rate (hours not included below)."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Any support from DHIT required by Client will be billed on an hourly basis at the normal rate (except as listed below)."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "DHIT will provide Patient Portal software and consulting services to Client, as follows:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "ConnectEHR Patient Portal “bolt-on” software."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Spanish language option: Each portal user can choose Spanish as default language and then portal text is displayed in Spanish."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Customizable user-friendly view of CCDA data. Sections can be sized, moved or hidden."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "User can restrict particular classes of data from being shared with 3rd parties."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Technical support, installation and project management of implementation billed on an hourly basis at the normal rate (not included below)."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "DHIT will provide CQMsolution software, as described below:"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "CQMsolution is a user-friendly web-browser-based application from Dynamic Health IT, Inc. (DHIT) for calculating, displaying, and generating clinical quality measures. This application is certified for the ONC Health IT Certification Program. CQMsolution is certified for the following criteria and can be used to meet ONC/CMS electronic Clinical Quality Measure requirements for the selected eCQMs purchased:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "170.315(c)(1) – Clinical Quality Measures – Capture and Export **"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "170.315(c)(2) – Clinical Quality Measures – Incorporate and Calculate"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "170.315(c)(3) – Clinical Quality Measures – Reporting"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "170.315(c)(4) – Clinical Quality Measures – Filter"
+      },
+      {
+        "type": "note",
+        "content": "** For 170.315(c)(1), DHIT recommends that vendors provide this functionality in their native EHR, rather than through CQMsolution."
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "CQMsolution consists of three main components:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "SQL Database - stores measure definitions, value sets, information about users and practices, system and audit logs, and calculation results"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "IIS Website - user interface, front end of the application"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "CQMsolution Agent - Windows service that performs the measure calculation and QRDA file generation"
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "CQMsolution performs these core functions:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Imports QRDA XML files for Report Calculation"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Calculates measure performance directly from patient data in a vendor database or by aggregating Category I QRDAs"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Provides reporting functionality and QRDA Category III aggregate output."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Builds QRDA Category I Patient-Level output XML documents from quality measures defined in HQMF."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Data will be sent to the application using stored procedures or by populating DHIT SQL server staging tables."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Displays report output in the browser interface, with dashboard, drilldown, and filter controls"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "CQMsolution’s user interface is accessed via web browser, where users can report quality measures, view patient-level results, examine underlying data, and filter on demographic variables."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "CQMsolution has the ability to run as a stand-alone application or as bolt-on software designed to attach to any EHR that uses a SQL type database. If the EHR captures patient data, CQMsolution can handle calculation and output."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "DHIT will provide Dynamic FHIR® API to comply with 2025 HTI-1 ONC requirements, as follows:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "HTI-1 2025 Certification"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "United States Core Data for Interoperability (USCDI) Version 3"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "HL7® SMART App Launch Implementation Guide Release 2.0.0"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "HL7 CDA® R2 Implementation Guide: C-CDA Templates for Clinical Notes STU Companion Guide, Release 4.1"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "FHIR US Core IG 6.1.0"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "FHIR R4.0.1"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Bulk FHIR IG Guide 1.0.1"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Includes assistance with USCDIv3 upgrade and support for adding Persistent IDs to CCD data elements support."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "The data is populated into the ConnectEHR database via receipt of an ONC Certified HL7 CCD Summary of Care C-CDA CCD version 2.1."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Dynamic FHIR supports data elements from US Core Resources up to and including Interoperability Version 3 (USCDIv3)."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "It secures the data using the SMART 2.0 technology standard with Open ID and OAuth 2.0 framework"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "The Dynamic FHIR API supports the following access/launch types:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Patient Access from an End-User Device: Standalone Launch provides patients access to USCDIv3 data in XML or JSON format via FHIR R4 DocumentReference Resource from any compatible app using Authorization Code Flow."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Patient Portal API Access: Patient Launch of an App from within a Patient Portal user session using the EHR Launch Flow. (Requires integration with Client’s Portal) Required by ONC but not currently tested in Inferno"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Practitioner Portal API Access: Practitioner Launch of an App from within their EHR session. The EHR Launch Flow can be either a Single-patient app that runs in the context of a patient record or a User-level app (Ex. Appointment manager). (Requires integration with Client’s EHR)"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Backend Service Access for Bulk Data (Flat FHIR) Provides access to Clients autonomously or semi-autonomously that need to access to resources from FHIR servers that have pre-authorized defined scopes of access."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "The Dynamic FHIR API requires a multi-server environment to support all components of the API:"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "ConnectEHR database & Agent"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "FHIR Presentation Site"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "FHIR Identity Site"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "FHIR Datastore DB & Agent"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will work with Client to implement one APP connection to the API at no extra cost. Support for additional APPs will be billed hourly."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will support the installation of the purchased software in Client’s environment. Client to configure servers and create user accounts with appropriate privileges. This does not include configuring software or integrating with Client EHR."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Consulting, Technical Support and Project Management of Dynamic FHIR implementation are billed on an hourly basis."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Any requested enhancements to software will be billed on an hourly basis at the normal rate (hours not included below)."
+      },
+      {
+        "type": "heading",
+        "content": "Pricing:"
+      },
+      {
+        "type": "paragraph_noindent",
+        "content": "NIST Modules – 170.315"
+      },
+      {
+        "type": "pricing_table",
+        "label": "ConnectEHR",
+        "rows": [
+          {
+            "module": "ConnectEHR Core Functionality",
+            "items": [
+              "170.315 (a)(13) Patient-specific Education Resources – Infobutton",
+              "170.315 (b)(1) Transitions of Care – ConnectEHR CCDA",
+              "170.315 (b)(10) Electronic Health Information Export **Limited to USCDI v3",
+              "170.315 (d)(4) Amendments – ConnectEHR CCDA",
+              "170.315 (e)(1) View, Download, and Transmit to 3rd Party*"
+            ],
+            "price": "$16,300",
+            "initial": true,
+            "id": "connectehr__connectehr_core_functionality",
+            "optional": false
+          },
+          {
+            "module": "170.315 (b)(7) Security Tags – Summary of Care – Send",
+            "price": "$500",
+            "initial": true,
+            "id": "connectehr__170_315_b_7_security_tags_summary_of_care_send",
+            "optional": true
+          },
+          {
+            "module": "170.315 (b)(8) Security Tags – Summary of Care – Receive",
+            "price": "$500",
+            "initial": true,
+            "id": "connectehr__170_315_b_8_security_tags_summary_of_care_receive",
+            "optional": true
+          },
+          {
+            "module": "170.315(f)(1) Transmission to Immunization Registries",
+            "price": "$3,000",
+            "initial": true,
+            "id": "connectehr__170_315_f_1_transmission_to_immunization_registrie",
+            "optional": true
+          },
+          {
+            "module": "170.315(f)(2) Transmission to public health agencies – Syndromic Surveillance",
+            "price": "$1,500",
+            "initial": true,
+            "id": "connectehr__170_315_f_2_transmission_to_public_health_agencies",
+            "optional": true
+          },
+          {
+            "module": "170.315(f)(5) Electronic Case Reporting via eCRNow (includes 10 support hours)",
+            "price": "$5,000",
+            "initial": true,
+            "id": "connectehr__170_315_f_5_electronic_case_reporting_via_ecrnow_i",
+            "optional": true
+          },
+          {
+            "module": "Optional Clinical Note Documents",
+            "items": [
+              "Consultation Note C-CDA – $1,500",
+              "History and Physical C-CDA – $1,500",
+              "Progress Note C-CDA – $1,500",
+              "Discharge Summary Note C-CDA – $1,500",
+              "Imaging Narrative C-CDA – $1,500",
+              "Procedure Note C-CDA – $1,500",
+              "Bundle of all 6 Clinical Note Documents – $6,000"
+            ],
+            "price": "",
+            "initial": true,
+            "id": "connectehr__optional_clinical_note_documents",
+            "optional": true
+          },
+          {
+            "module": "30 Hours of support",
+            "price": "Included",
+            "initial": false,
+            "id": "connectehr__30_hours_of_support",
+            "optional": false
+          },
+          {
+            "module": "ConnectEHR Total:",
+            "price": "$",
+            "initial": false,
+            "isTotal": true,
+            "id": "connectehr__total",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "type": "pricing_table",
+        "label": "Patient Portal",
+        "rows": [
+          {
+            "module": "Patient Portal Core Functionality",
+            "items": [
+              "170.315 (e)(1) View, Download, and Transmit to 3rd Party*",
+              "170.315 (e)(2) Secure Messaging (Not Required)",
+              "170.315 (e)(3) Patient Health Information Capture",
+              "170.315 (d)(8) Integrity",
+              "170.315 (d)(9) Trusted Connection"
+            ],
+            "price": "$9,700",
+            "initial": true,
+            "id": "patient_portal__patient_portal_core_functionality",
+            "optional": false
+          },
+          {
+            "module": "10 Hours of support",
+            "price": "Included",
+            "initial": false,
+            "id": "patient_portal__10_hours_of_support",
+            "optional": false
+          },
+          {
+            "module": "Patient Portal Total:",
+            "price": "$",
+            "initial": false,
+            "isTotal": true,
+            "id": "patient_portal__total",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "type": "pricing_table",
+        "label": "Dynamic FHIR API",
+        "rows": [
+          {
+            "module": "HTI-1 2025 ONC Certified FHIR SMART 2.0",
+            "items": [
+              "DataStore – Included",
+              "USCDI v3 FHIR Resources – Included",
+              "g(10) Conformance Fee – Included",
+              "Identity Provider (IDP) Integration ($5,000 per IDP)"
+            ],
+            "price": "$32,000",
+            "initial": true,
+            "id": "dynamic_fhir_api__hti_1_2025_onc_certified_fhir_smart_2_0",
+            "optional": false
+          },
+          {
+            "module": "On-Boarding API",
+            "price": "$1,500",
+            "initial": true,
+            "id": "dynamic_fhir_api__on_boarding_api",
+            "optional": true
+          },
+          {
+            "module": "IQ API",
+            "price": "$1,500",
+            "initial": true,
+            "id": "dynamic_fhir_api__iq_api",
+            "optional": true
+          },
+          {
+            "module": "Single Patient API",
+            "price": "",
+            "initial": false,
+            "id": "dynamic_fhir_api__single_patient_api",
+            "optional": true
+          },
+          {
+            "module": "40 Hours of support (*** If certifying g7 and 9, add 10 hours)",
+            "price": "Included",
+            "initial": false,
+            "id": "dynamic_fhir_api__40_hours_of_support_if_certifying_g7_and_9_add_10_",
+            "optional": false
+          },
+          {
+            "module": "Dynamic FHIR API Software Total:",
+            "price": "$",
+            "initial": false,
+            "isTotal": true,
+            "id": "dynamic_fhir_api__total",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "type": "pricing_table",
+        "label": "CQMsolution",
+        "rows": [
+          {
+            "module": "Clinical Quality Measure Solution (6 eCQMs) 170.315(c)(1), (c)(2), (c)(3) – 1 prod, 1 test, 1 staging for 1 TIN",
+            "items": [
+              "Quality Measure Generation for QRDA 1 and QRDA 3 – Included",
+              "Cypress 7.3 (2025 CQM reporting year) – Included",
+              "Bank of Support Hours (40) – Included"
+            ],
+            "price": "$25,000",
+            "initial": true,
+            "id": "cqmsolution__clinical_quality_measure_solution_6_ecqms_170_315_",
+            "optional": false
+          },
+          {
+            "module": "Benchmarks for QPP",
+            "price": "$1,500",
+            "initial": true,
+            "id": "cqmsolution__benchmarks_for_qpp",
+            "optional": true
+          },
+          {
+            "module": "API for Cypress Testing (optional)",
+            "price": "$1,500",
+            "initial": true,
+            "id": "cqmsolution__api_for_cypress_testing_optional",
+            "optional": true
+          },
+          {
+            "module": "CQMsolution SPARK Dashboard",
+            "price": "$3,000",
+            "initial": true,
+            "id": "cqmsolution__cqmsolution_spark_dashboard",
+            "optional": true
+          },
+          {
+            "module": "MIPS Output (individual)",
+            "price": "$1,500",
+            "initial": true,
+            "id": "cqmsolution__mips_output_individual",
+            "optional": true
+          },
+          {
+            "module": "MIPS Output (group)",
+            "price": "$1,500",
+            "initial": true,
+            "id": "cqmsolution__mips_output_group",
+            "optional": true
+          },
+          {
+            "module": "ACO QRDA I Output",
+            "price": "$2,000",
+            "initial": true,
+            "id": "cqmsolution__aco_qrda_i_output",
+            "optional": true
+          },
+          {
+            "module": "Onboarding API",
+            "price": "$1,500",
+            "initial": true,
+            "id": "cqmsolution__onboarding_api",
+            "optional": true
+          },
+          {
+            "module": "Queue Report API",
+            "price": "$1,500",
+            "initial": true,
+            "id": "cqmsolution__queue_report_api",
+            "optional": true
+          },
+          {
+            "module": "IQ API",
+            "price": "$1,500",
+            "initial": true,
+            "id": "cqmsolution__iq_api",
+            "optional": true
+          },
+          {
+            "module": "Dynamic Footprint",
+            "price": "$1,000",
+            "initial": true,
+            "id": "cqmsolution__dynamic_footprint",
+            "optional": true
+          },
+          {
+            "module": "Additional eCQMs",
+            "items": [
+              "Cost per additional eCQM: $750",
+              "Bundle of 10 eCQMs: $5,000",
+              "Unlimited eCQMs (Current MU EP only): $20,000"
+            ],
+            "price": "",
+            "initial": true,
+            "id": "cqmsolution__additional_ecqms",
+            "optional": true,
+            "qty": true
+          },
+          {
+            "module": "Additional MIPS Measures",
+            "items": [
+              "Cost per MIPS measure: $1,000",
+              "Bundle of 10 MIPS Measures: $7,500"
+            ],
+            "price": "",
+            "initial": true,
+            "id": "cqmsolution__additional_mips_measures",
+            "optional": true,
+            "qty": true
+          },
+          {
+            "module": "Additional Facilities",
+            "items": [
+              "Cost per additional TIN: $250",
+              "Bundle of 50 TINs: $7,500",
+              "Unlimited TINs: $50,000"
+            ],
+            "price": "",
+            "initial": true,
+            "id": "cqmsolution__additional_facilities",
+            "optional": true,
+            "qty": true
+          },
+          {
+            "module": "CQMsolution Software Total:",
+            "price": "$",
+            "initial": false,
+            "isTotal": true,
+            "id": "cqmsolution__total",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "type": "pricing_total",
+        "content": "Software Grand Total: $"
+      },
+      {
+        "type": "note",
+        "content": "Note: Except as noted below, DHIT labor is billed separately as stated in Rates and Fees and not included in software pricing."
+      },
+      {
+        "type": "note",
+        "content": "* Note that multiple modules are required to satisfy this criterion."
+      },
+      {
+        "type": "note",
+        "content": "** Your software will not be able to leverage our B10 certification."
+      },
+      {
+        "type": "heading",
+        "content": "Restrictions/Limitations:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This Agreement includes one production, one test and one staging server installation for Dynamic FHIR API. Client will be charged $1,500.00 for each additional server where Dynamic FHIR API is installed."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT requires Clients to test integration for production use with DHIT and comply fully with Maintenance of Certification. You are required to complete DHIT testing before any of your EHR clients use DHIT’s ONC CHPL ID to attest for programs like MIPS."
+      },
+      {
+        "type": "heading",
+        "content": "Maintenance Fees:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Dynamic FHIR API will have an optional annual fee for ONC updates and additional USCDI support."
+      },
+      {
+        "type": "heading",
+        "content": "Normal Rates and Fees:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Normal rate is $200 per hour per DHIT team member. This rate applies to all services except those described below under “On-call after-hours rate”. Normal Business Hours – 8:30AM to 5 PM Central Time, Monday through Friday, excluding major holidays."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The rate for a pre-purchased bank of support hours is $180 per hour with a minimum of 5 hours. Hours never expire but there are no refunds."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Bank of Support Hours ________hours (5-hour min.) x $180 = $____________"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "On-call after-hours rate is $250/hour with a minimum billing of ½ hour per incident. This rate applies to services performed outside of Normal Business Hours when Client contacts DHIT and requests that these services be performed outside of Normal Business Hours."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Minimum billing of 30 minutes per “incident”, where an incident involves working on a new issue, problem or task, unless DHIT is already engaged in Client work on the same day or has an ongoing project underway."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This quote does not include travel expenses. We do not anticipate on-site work. If Client requests on-site resources, reasonable travel-related expenses (airfare, car rental, meals, hotel, etc.) would be incremental to this quote and billed to Client as incurred."
+      },
+      {
+        "type": "heading",
+        "content": "Assumptions/Client Responsibilities:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will have both technical and application resources available to provide information concerning product functionality and technology infrastructure."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client’s EMR system is the source of truth for all data. Required coding systems are available in EMR system."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will provide Windows Servers and software for the FHIR API. (See Exhibit A for details)."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The DHIT servers will be accessible remotely via broadband using Windows Remote Desktop or other software to be provided by Client."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Client will be responsible for supplying test data and performing testing of all software and interfaces, including SQL Stored Procedures (see above). DHIT will perform unit testing."
+      },
+      {
+        "type": "heading",
+        "content": "Payment Terms:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "The Software Grand Total listed above will be due upon signature of this document. Discounted Bank of hours are due upon signature of agreement."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Invoices are sent via email and due/payable upon receipt. Late payments over 30 days will be assessed a 3% late fee. Late payments over 60 days will be passed over to our debt collection agency/lawyer with an additional fee applied."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "3% service fee is charged for Credit Card Payments."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "heading",
+        "content": "Signatures:"
+      },
+      {
+        "type": "signature",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "id": "custom",
+    "name": "Custom Agreement",
+    "description": "Build a custom agreement from scratch using the snippet library",
+    "fields": [
+      {
+        "key": "CUSTOMER_NAME",
+        "label": "Customer / Company Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "key": "PRODUCT_NAME",
+        "label": "Product / Service Name",
+        "type": "text",
+        "placeholder": "e.g., Custom Software Solution"
+      },
+      {
+        "key": "DATE",
+        "label": "Agreement Date",
+        "type": "date",
+        "auto": true
+      }
+    ],
+    "sections": [
+      {
+        "type": "doc_header",
+        "content": ""
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "title_italic",
+        "content": "{{CUSTOMER_NAME}}"
+      },
+      {
+        "type": "title_italic",
+        "content": "{{PRODUCT_NAME}}"
+      },
+      {
+        "type": "title_italic",
+        "content": "{{DATE}}"
+      }
+    ]
+  },
+  {
+    "id": "tie",
+    "name": "TIE Agreement",
+    "description": "The Interface Engine (TIE) software licensing and integration services",
+    "fields": [
+      {
+        "key": "CUSTOMER_NAME",
+        "label": "Customer / Company Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "key": "DATE",
+        "label": "Agreement Date",
+        "type": "date",
+        "auto": true
+      }
+    ],
+    "sections": [
+      {
+        "type": "doc_header",
+        "content": ""
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "title_italic",
+        "content": "{{CUSTOMER_NAME}}"
+      },
+      {
+        "type": "title_italic",
+        "content": "TIE Agreement"
+      },
+      {
+        "type": "title_italic",
+        "content": "{{DATE}}"
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "heading",
+        "content": "Services to be Provided:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Dynamic Health IT (DHIT) to provide the following software and optional services for {{CUSTOMER_NAME}} (Client):"
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Install licensed version of The Interface Engine (formerly HL7Connect) on Windows server to be provided by Client (optional)."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Technical Support and Project Management of The Interface Engine (TIE) implementation billed on an hourly basis."
+      },
+      {
+        "type": "arrow_bullet",
+        "content": "Convert HL7 ADT to .CSV. 25 hours"
+      },
+      {
+        "type": "heading",
+        "content": "Price Quote:"
+      },
+      {
+        "type": "pricing_table",
+        "label": "",
+        "rows": [
+          {
+            "module": "TIE Interface Engine (Select 10) \u2013 Up to 10 interface connections on a single server",
+            "items": [
+              "** Select 10 license fee can be applied toward Unlimited license fee if Client chooses to upgrade at some future date."
+            ],
+            "price": "$1,350",
+            "initial": true,
+            "id": "tie__tie_interface_engine_select_10",
+            "optional": false
+          },
+          {
+            "module": "Annual Support Fee (Normal Business Hours)",
+            "items": [
+              "Begins one year after contract execution and annually thereafter.",
+              "* Annual Support Fees enable On Demand Support."
+            ],
+            "price": "$500",
+            "initial": false,
+            "id": "tie__annual_support_fee",
+            "optional": false
+          },
+          {
+            "module": "Convert HL7 ADT to .CSV",
+            "items": [
+              "Estimate: 25 hours"
+            ],
+            "price": "$3,500",
+            "initial": true,
+            "id": "tie__convert_hl7_adt_to_csv",
+            "optional": true
+          },
+          {
+            "module": "TIE Total:",
+            "price": "$",
+            "initial": false,
+            "isTotal": true,
+            "id": "tie__total",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "Rates and Fees:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "This quote does not include travel expenses. Reasonable travel-related expenses (airfare, car rental, meals, hotel, etc.) would be incremental to this quote and billed to Client as incurred."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Hourly rate is $140 per hour for remote work during Normal Business Hours. On-site, if requested by Client would be $175 per hour."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "On-call after-hours rate is $175/hour. This rate applies to services performed outside of Normal Business Hours when Client has contracted for 24x7 support and contacts DHIT and requests that these services be performed outside of Normal Business Hours."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "For hourly support, minimum billing of 30 minutes per \u201Cincident\u201D, where an incident involves working on a new issue, problem or task, unless DHIT is already engaged in Client work on the same day or has an ongoing project underway."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Normal Business Hours \u2013 8:30AM to 5 PM Central Time, Monday through Friday, excluding major holidays."
+      },
+      {
+        "type": "heading",
+        "content": "Payment Terms:"
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "TIE license fee is due and will be invoiced at the start of this project, upon signature of this document."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "DHIT will invoice monthly for hours as they are worked."
+      },
+      {
+        "type": "diamond_bullet",
+        "content": "Invoices are sent via email and due/payable upon receipt."
+      },
+      {
+        "type": "spacer",
+        "content": ""
+      },
+      {
+        "type": "signature",
+        "content": ""
+      }
+    ]
+  }
+]
