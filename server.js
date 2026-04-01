@@ -17,6 +17,191 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
+// ─────────────────────────────────────────────────────────────────────────────
+// AUTH SYSTEM — paste this entire block into server.js
+// Place it DIRECTLY AFTER the existing middleware lines:
+//   app.use(cors());
+//   app.use(express.json({ limit: '10mb' }));
+// ─────────────────────────────────────────────────────────────────────────────
+//
+// NEW npm package needed — run once in your terminal:
+//   npm install express-session bcryptjs
+//
+// NEW .env variables — add to Railway Variables:
+//   SESSION_SECRET=any-long-random-string-you-make-up
+//   USER_1=admin:Your Name:yourpassword
+//   USER_2=boss:Boss One Name:theirpassword
+//   USER_3=boss:Boss Two Name:theirpassword
+//   USER_4=staff:Staff Name:theirpassword
+//
+// Format: role:Full Name:password
+// Roles: admin | boss | staff
+// ─────────────────────────────────────────────────────────────────────────────
+
+const session = require('express-session');
+const bcrypt  = require('bcryptjs');
+
+// ── Session middleware ────────────────────────────────────────────────────────
+
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'dhit-agreement-secret-change-me',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true,
+    maxAge: 8 * 60 * 60 * 1000, // 8 hours
+  },
+}));
+
+// ── Load users from env vars ──────────────────────────────────────────────────
+// Reads USER_1, USER_2 ... USER_10 from environment
+// Format: role:Full Name:password
+
+function loadUsers() {
+  const users = [];
+  for (let i = 1; i <= 10; i++) {
+    const raw = process.env[`USER_${i}`];
+    if (!raw) continue;
+    const parts = raw.split(':');
+    if (parts.length < 3) continue;
+    const [role, ...rest] = parts;
+    const password = rest.pop();
+    const name = rest.join(':');
+    users.push({ id: `user${i}`, role: role.trim(), name: name.trim(), password: password.trim() });
+  }
+  return users;
+}
+
+// ── Lockout tracking (in-memory, resets on redeploy) ─────────────────────────
+
+const loginAttempts = {}; // { ip: { count, lockedUntil } }
+const MAX_ATTEMPTS  = 7;
+const LOCKOUT_MS    = 15 * 60 * 1000; // 15 minutes
+
+function isLockedOut(ip) {
+  const entry = loginAttempts[ip];
+  if (!entry) return false;
+  if (entry.lockedUntil && Date.now() < entry.lockedUntil) return true;
+  if (entry.lockedUntil && Date.now() >= entry.lockedUntil) {
+    delete loginAttempts[ip]; // lockout expired
+    return false;
+  }
+  return false;
+}
+
+function recordFailedAttempt(ip) {
+  if (!loginAttempts[ip]) loginAttempts[ip] = { count: 0, lockedUntil: null };
+  loginAttempts[ip].count++;
+  if (loginAttempts[ip].count >= MAX_ATTEMPTS) {
+    loginAttempts[ip].lockedUntil = Date.now() + LOCKOUT_MS;
+  }
+}
+
+function clearAttempts(ip) {
+  delete loginAttempts[ip];
+}
+
+function attemptsRemaining(ip) {
+  const entry = loginAttempts[ip];
+  if (!entry) return MAX_ATTEMPTS;
+  return Math.max(0, MAX_ATTEMPTS - entry.count);
+}
+
+// ── Auth middleware ───────────────────────────────────────────────────────────
+// Protects all routes except login, logout, and client sign pages
+
+function requireAuth(req, res, next) {
+  // Always allow: login/logout endpoints, static assets, client sign pages
+  const open = [
+    '/api/auth/login',
+    '/api/auth/logout',
+    '/api/auth/me',
+  ];
+  if (open.includes(req.path)) return next();
+
+  // Allow client sign routes without builder auth
+  if (req.path.startsWith('/api/sign/')) return next();
+  if (req.path.startsWith('/api/agreement/')) return next();
+
+  // Static assets
+  if (req.path.match(/\.(js|css|png|jpg|ico|map|json|woff|woff2|ttf|svg)$/)) return next();
+
+  // Check session
+  if (req.session && req.session.user) return next();
+
+  // API calls get 401
+  if (req.path.startsWith('/api/')) {
+    return res.status(401).json({ error: 'Not authenticated' });
+  }
+
+  // All other routes serve the React app (React handles /login routing)
+  next();
+}
+
+app.use(requireAuth);
+
+// ── Auth routes ───────────────────────────────────────────────────────────────
+
+// POST /api/auth/login
+app.post('/api/auth/login', (req, res) => {
+  const ip = req.ip || req.connection.remoteAddress;
+
+  if (isLockedOut(ip)) {
+    const entry = loginAttempts[ip];
+    const minutesLeft = Math.ceil((entry.lockedUntil - Date.now()) / 60000);
+    return res.status(429).json({
+      error: `Account locked. Try again in ${minutesLeft} minute${minutesLeft !== 1 ? 's' : ''}.`,
+      locked: true,
+    });
+  }
+
+  const { name, password } = req.body;
+  if (!name || !password) {
+    return res.status(400).json({ error: 'Name and password required' });
+  }
+
+  const users = loadUsers();
+  const user = users.find(u => u.name.toLowerCase() === name.trim().toLowerCase());
+
+  if (!user || user.password !== password.trim()) {
+    recordFailedAttempt(ip);
+    const remaining = attemptsRemaining(ip);
+    if (remaining === 0) {
+      return res.status(401).json({
+        error: 'Account locked for 15 minutes due to too many failed attempts.',
+        locked: true,
+        remaining: 0,
+      });
+    }
+    return res.status(401).json({
+      error: `Incorrect name or password. ${remaining} attempt${remaining !== 1 ? 's' : ''} remaining.`,
+      remaining,
+    });
+  }
+
+  clearAttempts(ip);
+  req.session.user = { id: user.id, name: user.name, role: user.role };
+  res.json({ ok: true, user: { name: user.name, role: user.role } });
+});
+
+// POST /api/auth/logout
+app.post('/api/auth/logout', (req, res) => {
+  req.session.destroy(() => res.json({ ok: true }));
+});
+
+// GET /api/auth/me — React calls this on load to check session
+app.get('/api/auth/me', (req, res) => {
+  if (req.session && req.session.user) {
+    res.json({ authenticated: true, user: req.session.user });
+  } else {
+    res.json({ authenticated: false });
+  }
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// END AUTH SYSTEM BLOCK
+// ─────────────────────────────────────────────────────────────────────────────
 const PORT = process.env.SERVER_PORT || 3003;
 
 // ─── Google Drive OAuth ──────────────────────────────────────────────────────

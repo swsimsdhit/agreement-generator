@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import "./App.css";
+import LoginPage from "./LoginPage";
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -290,6 +291,11 @@ const IconArrowDown = () => (
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 
+if (!authChecked) return null;
+if (!currentUser) {
+  return <LoginPage onLogin={user => setCurrentUser(user)} />;
+}
+
 export default function App() {
   const [products, setProducts]           = useState([]);
   const [selectedIds, setSelectedIds]     = useState(new Set());
@@ -314,6 +320,8 @@ export default function App() {
 
   // Snippet editor state
   const [editSnippet, setEditSnippet]     = useState(null); // null | { id?, name, type, content, category }
+  const [authChecked, setAuthChecked] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const editNameRef = useRef(null);
 
   const isCustomMode = selectedIds.has("custom");
@@ -375,6 +383,16 @@ export default function App() {
 
   // Price overrides: keyed by "sectionIndex__rowIndex" -> price string
   const [priceOverrides, setPriceOverrides] = useState({});
+
+useEffect(() => {
+  fetch("/api/auth/me")
+    .then(r => r.json())
+    .then(data => {
+      if (data.authenticated) setCurrentUser(data.user);
+      setAuthChecked(true);
+    })
+    .catch(() => setAuthChecked(true));
+}, []);
 
   // Disabled add-ons: Set of row IDs that are toggled OFF
   const [disabledAddons, setDisabledAddons] = useState(new Set());
@@ -520,6 +538,11 @@ export default function App() {
       setGenerating(null);
     }
   };
+
+const handleLogout = async () => {
+  await fetch("/api/auth/logout", { method: "POST" });
+  setCurrentUser(null);
+};
 
   const handleGoogleConnect = async () => {
     try {
@@ -705,9 +728,25 @@ export default function App() {
           <span className="header-divider" />
           <span className="header-sub">Dynamic Health IT, Inc.</span>
         </div>
-        <div className="header-right">
-          <span className="header-date">{todayFormatted()}</span>
-        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+  <span style={{ fontSize: 13, color: "#666" }}>
+    {currentUser.name}
+  </span>
+  <button
+    onClick={handleLogout}
+    style={{
+      fontSize: 12,
+      padding: "4px 12px",
+      border: "1px solid #ddd",
+      borderRadius: 4,
+      background: "transparent",
+      cursor: "pointer",
+      color: "#666",
+    }}
+  >
+    Sign out
+  </button>
+</div>
       </header>
 
       {/* ── Body ── */}
