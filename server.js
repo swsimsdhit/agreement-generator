@@ -114,10 +114,17 @@ function attemptsRemaining(ip) {
 function requireAuth(req, res, next) {
   // Always allow: login/logout endpoints, static assets, client sign pages
   const open = [
-    '/api/auth/login',
-    '/api/auth/logout',
-    '/api/auth/me',
-  ];
+  '/api/auth/login',
+  '/api/auth/logout',
+  '/api/auth/me',
+  '/api/products',
+  '/api/library',
+  '/api/snippets',
+  '/api/logo-d',
+  '/api/google/status',
+  '/api/google/auth',
+  '/api/google/callback',
+];
   if (open.includes(req.path)) return next();
 
   // Allow client sign routes without builder auth
