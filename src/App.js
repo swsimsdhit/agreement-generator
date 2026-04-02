@@ -291,11 +291,6 @@ const IconArrowDown = () => (
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 
-if (!authChecked) return null;
-if (!currentUser) {
-  return <LoginPage onLogin={user => setCurrentUser(user)} />;
-}
-
 export default function App() {
   const [products, setProducts]           = useState([]);
   const [selectedIds, setSelectedIds]     = useState(new Set());
@@ -711,6 +706,11 @@ const handleLogout = async () => {
   useEffect(() => {
     if (editSnippet && editNameRef.current) editNameRef.current.focus();
   }, [editSnippet]);
+
+if (!authChecked) return null;
+if (!currentUser) {
+  return <LoginPage onLogin={user => setCurrentUser(user)} />;
+}
 
   return (
     <div className="app">
