@@ -401,7 +401,6 @@ useEffect(() => {
   setReviewMode(true);
   setReviewToken(token);
   setBossId(boss);
-  setBossName(currentUser?.name || '');
 
   fetch(`/api/draft/${token}`)
     .then(r => r.json())
@@ -586,7 +585,7 @@ const handleApprove = async () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         bossId,
-        bossName,
+        bossName: currentUser?.name || bossId || 'Boss',
         updatedDraft: {
           fields: { ...templateData, _DOC_TITLE: docTitle },
           selectedIds: Array.from(selectedIds),
@@ -619,7 +618,7 @@ const handleRequestChanges = async () => {
     const res = await fetch(`/api/draft/${reviewToken}/changes`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ bossId, bossName, feedback: feedbackText }),
+      body: JSON.stringify({ bossId, bossName: currentUser?.name || bossId, feedback: feedbackText }),
     });
     if (!res.ok) throw new Error((await res.json()).error);
     setApprovalStatus("changes_sent");
