@@ -1292,6 +1292,341 @@ app.post('/api/generate/gdocs', async (req, res) => {
   }
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// APPROVAL FLOW — paste this entire block into server.js
+// Place it ABOVE the "Start" / app.listen section at the bottom
+// ─────────────────────────────────────────────────────────────────────────────
+//
+// NEW npm package needed — run once:
+//   npm install nodemailer
+//
+// NEW .env variables needed (add to your .env file):
+//   GMAIL_USER=you@yourdomain.com
+//   GMAIL_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx   ← 16-char Google App Password
+//   APP_BASE_URL=https://agreements.yourdomain.com
+//   BOSS_1_EMAIL=boss1@yourdomain.com
+//   BOSS_1_NAME=Boss One
+//   BOSS_2_EMAIL=boss2@yourdomain.com
+//   BOSS_2_NAME=Boss Two
+//   TEAM_EMAIL=team@yourdomain.com
+// ─────────────────────────────────────────────────────────────────────────────
+
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+
+// ── Storage (flat JSON file next to server.js) ────────────────────────────────
+
+const DRAFTS_PATH = path.join(__dirname, 'drafts.json');
+
+function loadDrafts() {
+  try { return JSON.parse(fs.readFileSync(DRAFTS_PATH, 'utf8')); }
+  catch { return []; }
+}
+
+function saveDrafts(drafts) {
+  fs.writeFileSync(DRAFTS_PATH, JSON.stringify(drafts, null, 2));
+}
+
+function findDraft(token) {
+  return loadDrafts().find(d => d.token === token);
+}
+
+function updateDraft(token, patch) {
+  const drafts = loadDrafts();
+  const i = drafts.findIndex(d => d.token === token);
+  if (i === -1) return null;
+  drafts[i] = { ...drafts[i], ...patch };
+  saveDrafts(drafts);
+  return drafts[i];
+}
+
+// ── Email transport ───────────────────────────────────────────────────────────
+
+function getMailer() {
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
+}
+
+async function sendMail({ to, subject, html }) {
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    console.warn('[email] GMAIL_USER / GMAIL_APP_PASSWORD not set — skipping send');
+    console.log('[email] Would have sent to:', to, '|', subject);
+    return;
+  }
+  await getMailer().sendMail({
+    from: `"Agreement Builder" <${process.env.GMAIL_USER}>`,
+    to,
+    subject,
+    html,
+  });
+}
+
+// ── Email helpers ─────────────────────────────────────────────────────────────
+
+function bossReviewEmail(draft, bossId, bossName) {
+  const url = `${process.env.APP_BASE_URL}/review/${draft.token}?boss=${bossId}`;
+  const products = (draft.selectedProductNames || []).join(', ') || 'See agreement';
+  return `
+    <p>Hi ${bossName},</p>
+    <p><strong>${draft.createdBy || 'Your team'}</strong> has submitted an agreement for your approval.</p>
+    <table style="border-collapse:collapse;font-size:14px;margin:16px 0">
+      <tr><td style="padding:4px 12px 4px 0;color:#666">Client</td><td><strong>${draft.fields.CUSTOMER_NAME || '—'}</strong></td></tr>
+      <tr><td style="padding:4px 12px 4px 0;color:#666">Products</td><td>${products}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0;color:#666">Date</td><td>${draft.fields.DATE || '—'}</td></tr>
+    </table>
+    <p>
+      <a href="${url}" style="display:inline-block;background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-size:14px">
+        Review &amp; Approve Agreement →
+      </a>
+    </p>
+    <p style="font-size:12px;color:#999">
+      You can edit the agreement before approving. Both bosses must approve before the client link is sent.
+    </p>
+  `;
+}
+
+function changesRequestedEmail(draft, bossName, feedback) {
+  return `
+    <p>Hi,</p>
+    <p><strong>${bossName}</strong> has requested changes to the agreement for <strong>${draft.fields.CUSTOMER_NAME || 'your client'}</strong>.</p>
+    ${feedback ? `<blockquote style="border-left:3px solid #ccc;margin:12px 0;padding:8px 16px;color:#444">${feedback}</blockquote>` : ''}
+    <p>Please update the agreement and resubmit for approval.</p>
+    <p>
+      <a href="${process.env.APP_BASE_URL}" style="display:inline-block;background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-size:14px">
+        Open Agreement Builder →
+      </a>
+    </p>
+  `;
+}
+
+function allApprovedEmail(draft) {
+  const url = `${process.env.APP_BASE_URL}/sign/${draft.clientToken}`;
+  return `
+    <p>Hi,</p>
+    <p>Both bosses have approved the agreement for <strong>${draft.fields.CUSTOMER_NAME}</strong>.</p>
+    <p>The client sign link has been sent to <strong>${draft.clientEmail}</strong>.</p>
+    <p style="font-size:13px;color:#666">Sign link: <a href="${url}">${url}</a></p>
+  `;
+}
+
+function clientSignEmail(draft) {
+  const url = `${process.env.APP_BASE_URL}/sign/${draft.clientToken}`;
+  const products = (draft.selectedProductNames || []).join(', ') || 'your agreement';
+  return `
+    <p>Hi ${draft.fields.CUSTOMER_NAME || 'there'},</p>
+    <p>Your agreement is ready for your review and signature.</p>
+    <table style="border-collapse:collapse;font-size:14px;margin:16px 0">
+      <tr><td style="padding:4px 12px 4px 0;color:#666">Products</td><td>${products}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0;color:#666">Date</td><td>${draft.fields.DATE || '—'}</td></tr>
+    </table>
+    <p>
+      <a href="${url}" style="display:inline-block;background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-size:14px">
+        Review &amp; Sign Agreement →
+      </a>
+    </p>
+    <p style="font-size:12px;color:#999">This link is unique to you. Please do not share it.</p>
+  `;
+}
+
+// ── Routes ────────────────────────────────────────────────────────────────────
+
+// POST /api/draft  — team submits agreement for boss approval
+app.post('/api/draft', async (req, res) => {
+  try {
+    const {
+      fields,
+      selectedIds,
+      selectedProductNames,
+      sections,
+      priceOverrides,
+      hostedProducts,
+      customSections,
+      clientEmail,
+      createdBy,
+    } = req.body;
+
+    if (!fields?.CUSTOMER_NAME) {
+      return res.status(400).json({ error: 'CUSTOMER_NAME is required' });
+    }
+
+    const token = crypto.randomBytes(5).toString('hex'); // e.g. a3f9k2b1c4
+
+    const draft = {
+      token,
+      status: 'pending_review',      // pending_review | approved | sent | signed
+      approvals: {},                  // { boss1: { name, at }, boss2: { name, at } }
+      clientToken: null,
+      clientEmail: clientEmail || '',
+      createdBy: createdBy || '',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      fields,
+      selectedIds: Array.from(selectedIds || []),
+      selectedProductNames: selectedProductNames || [],
+      sections,
+      priceOverrides: priceOverrides || {},
+      hostedProducts: Array.from(hostedProducts || []),
+      customSections: customSections || [],
+    };
+
+    const drafts = loadDrafts();
+    drafts.push(draft);
+    saveDrafts(drafts);
+
+    // Email both bosses
+    const bosses = [
+      { id: 'boss1', email: process.env.BOSS_1_EMAIL, name: process.env.BOSS_1_NAME || 'Boss 1' },
+      { id: 'boss2', email: process.env.BOSS_2_EMAIL, name: process.env.BOSS_2_NAME || 'Boss 2' },
+    ];
+
+    await Promise.all(bosses.map(b =>
+      sendMail({
+        to: b.email,
+        subject: `Agreement for ${fields.CUSTOMER_NAME} — needs your approval`,
+        html: bossReviewEmail(draft, b.id, b.name),
+      })
+    ));
+
+    res.json({ token, status: draft.status });
+  } catch (err) {
+    console.error('/api/draft error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET /api/draft/:token  — load draft into the builder (boss review page)
+app.get('/api/draft/:token', (req, res) => {
+  const draft = findDraft(req.params.token);
+  if (!draft) return res.status(404).json({ error: 'Draft not found' });
+  res.json(draft);
+});
+
+// GET /api/drafts  — list all drafts (admin list view)
+app.get('/api/drafts', (req, res) => {
+  const drafts = loadDrafts().map(d => ({
+    token: d.token,
+    status: d.status,
+    clientEmail: d.clientEmail,
+    customerName: d.fields?.CUSTOMER_NAME,
+    products: d.selectedProductNames,
+    createdAt: d.createdAt,
+    updatedAt: d.updatedAt,
+    approvals: d.approvals,
+    clientToken: d.clientToken,
+  }));
+  res.json(drafts.reverse()); // newest first
+});
+
+// POST /api/draft/:token/approve  — one boss approves (optionally with edits)
+app.post('/api/draft/:token/approve', async (req, res) => {
+  try {
+    const { bossId, bossName, updatedDraft } = req.body;
+
+    if (!bossId) return res.status(400).json({ error: 'bossId required' });
+
+    let draft = findDraft(req.params.token);
+    if (!draft) return res.status(404).json({ error: 'Draft not found' });
+    if (draft.status === 'sent' || draft.status === 'signed') {
+      return res.status(400).json({ error: 'Agreement already sent to client' });
+    }
+
+    // Merge any edits the boss made before approving
+    const patch = {
+      approvals: {
+        ...draft.approvals,
+        [bossId]: { name: bossName, at: new Date().toISOString() },
+      },
+      updatedAt: new Date().toISOString(),
+    };
+    if (updatedDraft) {
+      patch.fields         = updatedDraft.fields         ?? draft.fields;
+      patch.selectedIds    = updatedDraft.selectedIds    ?? draft.selectedIds;
+      patch.sections       = updatedDraft.sections       ?? draft.sections;
+      patch.priceOverrides = updatedDraft.priceOverrides ?? draft.priceOverrides;
+      patch.hostedProducts = updatedDraft.hostedProducts ?? draft.hostedProducts;
+      patch.customSections = updatedDraft.customSections ?? draft.customSections;
+      patch.selectedProductNames = updatedDraft.selectedProductNames ?? draft.selectedProductNames;
+    }
+
+    draft = updateDraft(req.params.token, patch);
+
+    // Check if both bosses have now approved
+    const BOSS_IDS = ['boss1', 'boss2'];
+    const allApproved = BOSS_IDS.every(id => draft.approvals[id]);
+
+    if (allApproved && !draft.clientToken) {
+      const clientToken = crypto.randomBytes(5).toString('hex');
+      draft = updateDraft(req.params.token, { status: 'sent', clientToken });
+
+      // Email client
+      if (draft.clientEmail) {
+        await sendMail({
+          to: draft.clientEmail,
+          subject: `Your agreement is ready to review and sign`,
+          html: clientSignEmail(draft),
+        });
+      }
+
+      // Notify team
+      if (process.env.TEAM_EMAIL) {
+        await sendMail({
+          to: process.env.TEAM_EMAIL,
+          subject: `✓ Agreement for ${draft.fields.CUSTOMER_NAME} approved and sent`,
+          html: allApprovedEmail(draft),
+        });
+      }
+    }
+
+    res.json({
+      allApproved,
+      approvals: draft.approvals,
+      status: draft.status,
+      clientToken: draft.clientToken || null,
+    });
+  } catch (err) {
+    console.error('/api/draft/:token/approve error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// POST /api/draft/:token/changes  — boss requests changes, notifies team
+app.post('/api/draft/:token/changes', async (req, res) => {
+  try {
+    const { bossName, feedback } = req.body;
+    const draft = findDraft(req.params.token);
+    if (!draft) return res.status(404).json({ error: 'Draft not found' });
+
+    // Reset approvals so both bosses must re-approve after edits
+    updateDraft(req.params.token, {
+      status: 'pending_review',
+      approvals: {},
+      updatedAt: new Date().toISOString(),
+    });
+
+    if (process.env.TEAM_EMAIL) {
+      await sendMail({
+        to: process.env.TEAM_EMAIL,
+        subject: `Changes requested on agreement for ${draft.fields.CUSTOMER_NAME}`,
+        html: changesRequestedEmail(draft, bossName || 'A boss', feedback),
+      });
+    }
+
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('/api/draft/:token/changes error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// END APPROVAL FLOW BLOCK
+// ─────────────────────────────────────────────────────────────────────────────
+
 // ─── Start ───────────────────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, 'build')));
 app.get('*', (req, res) => {
