@@ -858,8 +858,8 @@ if (sendMode && sendDraft) {
           <div style={{ fontSize: 13, color: "#888", marginTop: 8, textTransform: "uppercase", letterSpacing: "0.04em" }}>Send Agreement to Client</div>
         </div>
         <div style={{ background: "#f8f9fa", borderRadius: 8, padding: "16px", marginBottom: 24, fontSize: 13 }}>
-          <div style={{ fontWeight: 500, marginBottom: 8 }}>{sendDraft.customerName}</div>
-          <div style={{ color: "#666" }}>{(sendDraft.products || []).join(", ")}</div>
+          <div style={{ fontWeight: 500, marginBottom: 8 }}>{sendDraft.fields?.CUSTOMER_NAME || sendDraft.customerName}</div>
+          <div style={{ color: "#666" }}>{(sendDraft.selectedProductNames || sendDraft.products || []).join(", ")}</div>
         </div>
         {sendDone ? (
           <div style={{ background: "#e8f5e9", color: "#2e7d32", borderRadius: 8, padding: "16px", textAlign: "center", fontWeight: 500 }}>
