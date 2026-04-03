@@ -316,6 +316,14 @@ export default function App() {
   // Snippet editor state
   const [editSnippet, setEditSnippet]     = useState(null); // null | { id?, name, type, content, category }
   const [submittingDraft, setSubmittingDraft] = useState(false);
+  const [reviewMode, setReviewMode]         = useState(false);
+  const [reviewToken, setReviewToken]       = useState(null);
+  const [bossId, setBossId]                 = useState(null);
+  const [bossName, setBossName]             = useState('');
+  const [approvalStatus, setApprovalStatus] = useState(null);
+  const [submittingApproval, setSubmittingApproval] = useState(false);
+  const [feedbackText, setFeedbackText]     = useState('');
+  const [showFeedbackBox, setShowFeedbackBox] = useState(false);
   const [draftSent, setDraftSent] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -380,6 +388,34 @@ export default function App() {
 
   // Price overrides: keyed by "sectionIndex__rowIndex" -> price string
   const [priceOverrides, setPriceOverrides] = useState({});
+  
+  // Detect /review/:token URL and pre-load the draft
+useEffect(() => {
+  const match = window.location.pathname.match(/^\/review\/([a-f0-9]+)$/);
+  if (!match) return;
+
+  const token = match[1];
+  const params = new URLSearchParams(window.location.search);
+  const boss = params.get('boss') || 'boss1';
+
+  setReviewMode(true);
+  setReviewToken(token);
+  setBossId(boss);
+  setBossName(currentUser?.name || '');
+
+  fetch(`/api/draft/${token}`)
+    .then(r => r.json())
+    .then(draft => {
+      if (draft.error) { showToast('Draft not found', 'error'); return; }
+      setFields(draft.fields || {});
+      setSelectedIds(new Set(draft.selectedIds || []));
+      setCustomSections(draft.customSections || []);
+      setPriceOverrides(draft.priceOverrides || {});
+      setHostedProducts(new Set(draft.hostedProducts || []));
+      showToast('Agreement loaded — review and approve or request changes');
+    })
+    .catch(() => showToast('Could not load draft', 'error'));
+}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 useEffect(() => {
   fetch("/api/auth/me")
@@ -539,6 +575,60 @@ useEffect(() => {
 const handleLogout = async () => {
   await fetch("/api/auth/logout", { method: "POST" });
   setCurrentUser(null);
+};
+
+const handleApprove = async () => {
+  setSubmittingApproval(true);
+  try {
+    const docTitle = products.filter(p => selectedIds.has(p.id)).map(p => p.name).join(" / ") || "Agreement";
+    const res = await fetch(`/api/draft/${reviewToken}/approve`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        bossId,
+        bossName,
+        updatedDraft: {
+          fields: { ...templateData, _DOC_TITLE: docTitle },
+          selectedIds: Array.from(selectedIds),
+          selectedProductNames: products.filter(p => selectedIds.has(p.id)).map(p => p.name),
+          sections: composedSections,
+          priceOverrides,
+          hostedProducts: Array.from(hostedProducts),
+          customSections,
+        },
+      }),
+    });
+    if (!res.ok) throw new Error((await res.json()).error);
+    const data = await res.json();
+    setApprovalStatus("approved");
+    if (data.allApproved) {
+      showToast("Both bosses approved! Team will be notified to send to client.");
+    } else {
+      showToast("Your approval recorded. Waiting for the other boss.");
+    }
+  } catch (err) {
+    showToast(`Error: ${err.message}`, "error");
+  } finally {
+    setSubmittingApproval(false);
+  }
+};
+
+const handleRequestChanges = async () => {
+  setSubmittingApproval(true);
+  try {
+    const res = await fetch(`/api/draft/${reviewToken}/changes`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ bossId, bossName, feedback: feedbackText }),
+    });
+    if (!res.ok) throw new Error((await res.json()).error);
+    setApprovalStatus("changes_sent");
+    showToast("Team notified of requested changes.");
+  } catch (err) {
+    showToast(`Error: ${err.message}`, "error");
+  } finally {
+    setSubmittingApproval(false);
+  }
 };
 
 const handleSubmitForApproval = async () => {
@@ -888,17 +978,73 @@ if (!currentUser) {
             {selectedIds.size > 0 && !canGenerate && (
               <p className="missing-hint">Enter customer name to generate</p>
             )}
+            {reviewMode ? (
+  <div className="approval-panel">
+    {approvalStatus === "approved" && (
+      <div className="approval-done approval-done--ok">
+        Your approval has been recorded
+      </div>
+    )}
+    {approvalStatus === "changes_sent" && (
+      <div className="approval-done approval-done--changes">
+        Team notified — they will resubmit when ready
+      </div>
+    )}
+    {!approvalStatus && (
+      <>
+        <p className="approval-hint">
+          You can edit the agreement above before approving.
+        </p>
+        <button
+          className="btn btn-approve"
+          disabled={submittingApproval}
+          onClick={handleApprove}
+        >
+          {submittingApproval ? <span className="btn-spinner" /> : "✓ Approve Agreement"}
+        </button>
+        <button
+          className="btn btn-changes"
+          disabled={submittingApproval}
+          onClick={() => setShowFeedbackBox(v => !v)}
+        >
+          Request Changes
+        </button>
+        {showFeedbackBox && (
+          <>
+            <textarea
+              className="feedback-textarea"
+              placeholder="Describe what needs to change…"
+              value={feedbackText}
+              onChange={e => setFeedbackText(e.target.value)}
+              rows={3}
+            />
             <button
-  className={`btn btn-submit-approval ${!canGenerate ? "btn-disabled" : ""}`}
-  disabled={!canGenerate || submittingDraft}
-  onClick={handleSubmitForApproval}
->
-  {submittingDraft ? <span className="btn-spinner" /> : "Submit for Approval →"}
-</button>
-{draftSent && (
-  <div className="approval-done approval-done--ok">
-    Sent to both bosses for approval
+              className="btn btn-changes-send"
+              disabled={submittingApproval}
+              onClick={handleRequestChanges}
+            >
+              Send Feedback to Team
+            </button>
+          </>
+        )}
+      </>
+    )}
   </div>
+) : (
+  <>
+    <button
+      className={`btn btn-submit-approval ${!canGenerate ? "btn-disabled" : ""}`}
+      disabled={!canGenerate || submittingDraft}
+      onClick={handleSubmitForApproval}
+    >
+      {submittingDraft ? <span className="btn-spinner" /> : "Submit for Approval →"}
+    </button>
+    {draftSent && (
+      <div className="approval-done approval-done--ok">
+        Sent to both bosses for approval
+      </div>
+    )}
+  </>
 )}
 </div>
 </aside>

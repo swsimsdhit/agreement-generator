@@ -1209,3 +1209,60 @@
   background: #e8f5e9;
   color: #2e7d32;
 }
+
+.approval-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+.approval-hint {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+}
+.btn-approve {
+  background: #1a6e3c;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+}
+.btn-approve:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-changes {
+  background: transparent;
+  color: #c0392b;
+  border: 1px solid #c0392b;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  width: 100%;
+}
+.btn-changes-send {
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  width: 100%;
+}
+.feedback-textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+.approval-done--changes {
+  background: #fff3e0;
+  color: #e65100;
+}
