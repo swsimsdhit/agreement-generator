@@ -1407,12 +1407,17 @@ function changesRequestedEmail(draft, bossName, feedback) {
 }
 
 function allApprovedEmail(draft) {
-  const url = `${process.env.APP_BASE_URL}/sign/${draft.clientToken}`;
+  const url = `${process.env.APP_BASE_URL}/send/${draft.token}`;
   return `
     <p>Hi,</p>
     <p>Both bosses have approved the agreement for <strong>${draft.fields.CUSTOMER_NAME}</strong>.</p>
-    <p>The client sign link has been sent to <strong>${draft.clientEmail}</strong>.</p>
-    <p style="font-size:13px;color:#666">Sign link: <a href="${url}">${url}</a></p>
+    <p>Click below to enter the client email and send them the sign link.</p>
+    <p>
+      <a href="${url}" style="display:inline-block;background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-size:14px">
+        Send to Client →
+      </a>
+    </p>
+    <p style="font-size:12px;color:#999">Products: ${(draft.selectedProductNames || []).join(', ')}</p>
   `;
 }
 
