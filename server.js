@@ -1353,7 +1353,9 @@ function getMailer() {
 }
 
 async function sendMail({ to, subject, html }) {
-  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD || 
+    process.env.GMAIL_USER === 'placeholder@gmail.com' || 
+    process.env.GMAIL_APP_PASSWORD === 'placeholder') {
     console.warn('[email] GMAIL_USER / GMAIL_APP_PASSWORD not set — skipping send');
     console.log('[email] Would have sent to:', to, '|', subject);
     return;
