@@ -315,6 +315,8 @@ export default function App() {
 
   // Snippet editor state
   const [editSnippet, setEditSnippet]     = useState(null); // null | { id?, name, type, content, category }
+  const [submittingDraft, setSubmittingDraft] = useState(false);
+  const [draftSent, setDraftSent] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const editNameRef = useRef(null);
@@ -537,6 +539,35 @@ useEffect(() => {
 const handleLogout = async () => {
   await fetch("/api/auth/logout", { method: "POST" });
   setCurrentUser(null);
+};
+
+const handleSubmitForApproval = async () => {
+  if (!canGenerate) return;
+  setSubmittingDraft(true);
+  try {
+    const docTitle = products.filter(p => selectedIds.has(p.id)).map(p => p.name).join(" / ") || "Agreement";
+    const res = await fetch("/api/draft", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fields: { ...templateData, _DOC_TITLE: docTitle },
+        selectedIds: Array.from(selectedIds),
+        selectedProductNames: products.filter(p => selectedIds.has(p.id)).map(p => p.name),
+        sections: composedSections,
+        priceOverrides,
+        hostedProducts: Array.from(hostedProducts),
+        customSections,
+        createdBy: currentUser?.name || "Your team",
+      }),
+    });
+    if (!res.ok) throw new Error((await res.json()).error);
+    setDraftSent(true);
+    showToast("Sent to both bosses for approval!");
+  } catch (err) {
+    showToast(`Error: ${err.message}`, "error");
+  } finally {
+    setSubmittingDraft(false);
+  }
 };
 
   const handleGoogleConnect = async () => {
@@ -858,15 +889,19 @@ if (!currentUser) {
               <p className="missing-hint">Enter customer name to generate</p>
             )}
             <button
-              className={`btn btn-gdocs ${!canGenerate ? "btn-disabled" : ""}`}
-              disabled={!canGenerate || generating === "gdocs"}
-              onClick={handlePushToGDocs}
-            >
-              {generating === "gdocs" ? <span className="btn-spinner" /> : <IconGDocs />}
-              {googleAuthed ? "Push to Google Docs" : "Connect Google Drive"}
-            </button>
-          </div>
-        </aside>
+  className={`btn btn-submit-approval ${!canGenerate ? "btn-disabled" : ""}`}
+  disabled={!canGenerate || submittingDraft}
+  onClick={handleSubmitForApproval}
+>
+  {submittingDraft ? <span className="btn-spinner" /> : "Submit for Approval →"}
+</button>
+{draftSent && (
+  <div className="approval-done approval-done--ok">
+    Sent to both bosses for approval
+  </div>
+)}
+</div>
+</aside>
 
         {/* ── Center: Module Selector ── */}
         <div className="module-panel">

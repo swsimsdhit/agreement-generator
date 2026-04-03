@@ -1181,3 +1181,31 @@
   font-size: 10px;
   color: #888;
 }
+
+.btn-submit-approval {
+  background: #1a3a6e;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+}
+.btn-submit-approval:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.approval-done {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+.approval-done--ok {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
