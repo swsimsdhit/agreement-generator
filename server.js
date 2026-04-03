@@ -1634,6 +1634,43 @@ app.post('/api/draft/:token/changes', async (req, res) => {
 // END APPROVAL FLOW BLOCK
 // ─────────────────────────────────────────────────────────────────────────────
 
+// POST /api/draft/:token/send-client — team enters client email and fires sign link
+app.post('/api/draft/:token/send-client', async (req, res) => {
+  try {
+    const { clientEmail } = req.body;
+    if (!clientEmail) return res.status(400).json({ error: 'clientEmail required' });
+
+    let draft = findDraft(req.params.token);
+    if (!draft) return res.status(404).json({ error: 'Draft not found' });
+    if (draft.status === 'signed') return res.status(400).json({ error: 'Agreement already signed' });
+
+    // Save client email and generate client token if not already done
+    let clientToken = draft.clientToken;
+    if (!clientToken) {
+      clientToken = crypto.randomBytes(5).toString('hex');
+    }
+
+    draft = updateDraft(req.params.token, {
+      clientEmail,
+      clientToken,
+      status: 'sent',
+      updatedAt: new Date().toISOString(),
+    });
+
+    // Email client
+    await sendMail({
+      to: clientEmail,
+      subject: `Your agreement is ready to review and sign`,
+      html: clientSignEmail(draft),
+    });
+
+    res.json({ ok: true, clientToken });
+  } catch (err) {
+    console.error('/api/draft/:token/send-client error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // ─── Start ───────────────────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, 'build')));
 app.get('*', (req, res) => {

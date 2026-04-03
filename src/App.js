@@ -324,6 +324,12 @@ export default function App() {
   const [submittingApproval, setSubmittingApproval] = useState(false);
   const [feedbackText, setFeedbackText]     = useState('');
   const [showFeedbackBox, setShowFeedbackBox] = useState(false);
+  const [sendMode, setSendMode]     = useState(false);
+  const [sendToken, setSendToken]   = useState(null);
+  const [sendDraft, setSendDraft]   = useState(null);
+  const [sendEmail, setSendEmail]   = useState('');
+  const [sending, setSending]       = useState(false);
+  const [sendDone, setSendDone]     = useState(false);
   const [draftSent, setDraftSent] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -391,6 +397,22 @@ export default function App() {
   
   // Detect /review/:token URL and pre-load the draft
 useEffect(() => {
+  // Detect /send/:token URL — team enters client email
+  const sendMatch = window.location.pathname.match(/^\/send\/([a-f0-9]+)$/);
+  if (sendMatch) {
+    const token = sendMatch[1];
+    fetch(`/api/draft/${token}`)
+      .then(r => r.json())
+      .then(draft => {
+        if (draft.error) { showToast('Draft not found', 'error'); return; }
+        setSendMode(true);
+        setSendToken(token);
+        setSendDraft(draft);
+      })
+      .catch(() => showToast('Could not load draft', 'error'));
+    return;
+  }
+
   const match = window.location.pathname.match(/^\/review\/([a-f0-9]+)$/);
   if (!match) return;
 
@@ -826,6 +848,61 @@ const handleSubmitForApproval = async () => {
   useEffect(() => {
     if (editSnippet && editNameRef.current) editNameRef.current.focus();
   }, [editSnippet]);
+
+if (sendMode && sendDraft) {
+  return (
+    <div style={{ minHeight: "100vh", background: "#f4f5f7", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Arial, sans-serif" }}>
+      <div style={{ background: "#fff", borderRadius: 12, padding: "48px 40px", width: "100%", maxWidth: 480, boxShadow: "0 2px 16px rgba(0,0,0,0.08)" }}>
+        <div style={{ textAlign: "center", marginBottom: 32 }}>
+          <img src="/logo.png" alt="DHIT" style={{ height: 48, objectFit: "contain" }} onError={e => { e.target.style.display = "none"; }} />
+          <div style={{ fontSize: 13, color: "#888", marginTop: 8, textTransform: "uppercase", letterSpacing: "0.04em" }}>Send Agreement to Client</div>
+        </div>
+        <div style={{ background: "#f8f9fa", borderRadius: 8, padding: "16px", marginBottom: 24, fontSize: 13 }}>
+          <div style={{ fontWeight: 500, marginBottom: 8 }}>{sendDraft.customerName}</div>
+          <div style={{ color: "#666" }}>{(sendDraft.products || []).join(", ")}</div>
+        </div>
+        {sendDone ? (
+          <div style={{ background: "#e8f5e9", color: "#2e7d32", borderRadius: 8, padding: "16px", textAlign: "center", fontWeight: 500 }}>
+            Sign link sent to client successfully
+          </div>
+        ) : (
+          <>
+            <label style={{ display: "block", fontSize: 13, fontWeight: 500, color: "#444", marginBottom: 6 }}>Client email address</label>
+            <input
+              type="email"
+              value={sendEmail}
+              onChange={e => setSendEmail(e.target.value)}
+              placeholder="client@example.com"
+              style={{ width: "100%", padding: "10px 12px", border: "1px solid #ddd", borderRadius: 6, fontSize: 14, boxSizing: "border-box", marginBottom: 16 }}
+            />
+            <button
+              disabled={!sendEmail || sending}
+              onClick={async () => {
+                setSending(true);
+                try {
+                  const res = await fetch(`/api/draft/${sendToken}/send-client`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ clientEmail: sendEmail }),
+                  });
+                  if (!res.ok) throw new Error((await res.json()).error);
+                  setSendDone(true);
+                } catch (err) {
+                  alert("Error: " + err.message);
+                } finally {
+                  setSending(false);
+                }
+              }}
+              style={{ width: "100%", padding: 11, background: !sendEmail ? "#ccc" : "#1a3a6e", color: "#fff", border: "none", borderRadius: 6, fontSize: 15, fontWeight: 500, cursor: !sendEmail ? "not-allowed" : "pointer" }}
+            >
+              {sending ? "Sending…" : "Send Sign Link to Client →"}
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
 
 if (!authChecked) return null;
 if (!currentUser) {
